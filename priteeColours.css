@@ -1,3 +1,10 @@
+:root {
+	--mainContainerColour: #127012;
+	--titleBarColour: #218021;
+	--subdivColour1: #707070;
+	--subdivColour2: #888888;
+}
+
 html {
 	width: 100%;
 	height: 100%;
@@ -16,23 +23,40 @@ body {
 	transition: background-color 250ms ease-in-out;
 }
 
-button {
-	border-radius: 10px;
-	border: 1px solid black;
-	min-height: 20px;
-	min-width: fit-content;
-	width: 9%;
-	height: 3%;
-	white-space: nowrap;
-	background-color: black;
-	color: white;
-	font-size: 20px;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+#mainContainer {
+	width: 100%;
+	height: 100%;
+	background-color: var(--mainContainerColour, slategrey);
 }
 
-button:hover {
-	background-color: #474747;
-	-webkit-transition: background-color 300ms ease-in-out;
-	transition: background-color 300ms ease-in-out;
+#titleBar {
+	width: 100%;
+	height: 5%;
+	position: sticky;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: var(--titleBarColour, lightsteelblue);
 }
 
+/* button {
+ *     border-radius: 10px;
+ *     border: 1px solid black;
+ *     min-height: 20px;
+ *     min-width: fit-content;
+ *     width: 9%;
+ *     height: 3%;
+ *     white-space: nowrap;
+ *     background-color: black;
+ *     color: white;
+ *     font-size: 20px;
+ *     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ * }
+ *
+ * button:hover {
+ *     background-color: #474747;
+ *     -webkit-transition: background-color 300ms ease-in-out;
+ *     transition: background-color 300ms ease-in-out;
+ * } */
