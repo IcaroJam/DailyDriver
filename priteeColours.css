@@ -18,10 +18,13 @@ body {
 	height: 5vh;
 	padding: 5px 10px;
 
+	z-index: 7;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+
+	background-color: var(--mainContainerColour, slategrey);
 
 	position: fixed;
 }
@@ -58,6 +61,7 @@ body {
 	height: calc(95vh - 10px);
 	width: 192px;
 
+	z-index: 3;
 	position: absolute;
 	top: calc(5vh + 10px);
 
