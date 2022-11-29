@@ -3,6 +3,7 @@
 	--titleBarColour: #354531;
 	--subdivColour1: var(--mainContainerColour);
 	--subdivColour2: #456747;
+	--subdivColour3: #386252;
 	--titleTextColour: #567356;
 	--otherpalettercolourlol: #7d6750;
 }
@@ -88,4 +89,31 @@ body {
 
 	font-size: 2em;
 	color: var(--titleBarColour);
+}
+
+#taskBar {
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: flex-start;
+	position: absolute;
+	top: calc(5vh + 10px);
+}
+
+.taskElement {
+	z-index: 2;
+	width: 95vw;
+	min-height: 150px;
+	margin-top: 10px;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 0 30px 30px 0;
+
+	font-size: 2em;
+	background-color: wheat;
 }
