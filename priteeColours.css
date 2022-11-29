@@ -117,3 +117,24 @@ body {
 	font-size: 2em;
 	background-color: wheat;
 }
+
+#taskContainer {
+	z-index: 3;
+	width: 70vw;
+
+	position: absolute;
+	top: calc(5vh + 10px);
+	right: 0;
+}
+
+.task {
+	z-index: 3;
+	width: 70vw;
+
+	position: absolute;
+
+	border-radius: 50px 0 0 50px;
+
+	color: var(--titleBarColour);
+	background-color: grey;
+}

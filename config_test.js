@@ -1,4 +1,5 @@
 import defaults from './default_conf_test.json' assert {type: 'json'};
+import taskTest from './testTasks.json' assert {type: 'json'};
 // Get the initial config file from the local cache:
 let	initConf = JSON.parse(localStorage.getItem("default_conf_test.json"));
 if (initConf == undefined) {
@@ -12,7 +13,8 @@ initConf = defaults; // Overwrite local storage (should be removed once the defa
 
 handleErrors();
 
-loadContent(initConf["startTime"], initConf["endTime"]);
+loadAreas(initConf.startTime, initConf.endTime);
+loadTasks();
 
 function handleErrors() {
 	if (initConf.startTime === initConf.endTime | initConf.startTime < 0 || initConf.endTime < 0 || initConf.startTime > 23 || initConf.endTime > 23) {
@@ -22,7 +24,11 @@ function handleErrors() {
 	}
 }
 
-function loadContent(sTime, eTime) {
+function timeFromStart(sTime, eTime) {
+	return sTime > eTime ? (24 + eTime - sTime) : eTime - sTime;
+}
+
+function loadAreas(sTime, eTime) {
 	const bar = document.getElementById("sideBar");
 	const taskBar = document.getElementById("taskBar");
 	const variables = getComputedStyle(document.querySelector(":root"));
@@ -46,4 +52,22 @@ function loadContent(sTime, eTime) {
 		if (sTime === 24)
 			sTime = 0;
 	}
+}
+
+function loadTasks() {
+	let taskZone = document.getElementById("taskContainer");
+	// Get and load notes if there are any stored:
+	let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
+	if (tasks != undefined) {
+		for (let i in tasks.array) {
+			const timeSpan = timeFromStart(tasks.array[i].startTime, tasks.array[i].endTime);
+			const newTask = document.createElement("div");
+
+			newTask.className = "task";
+			newTask.style.height = 170 * timeSpan + "px";
+			newTask.style.top = 160 * timeFromStart(initConf.startTime, tasks.array[i].startTime) + 5 + "px";
+			taskZone.appendChild(newTask);
+		}
+	}
+	localStorage.setItem("currentTasks", JSON.stringify(taskTest));
 }
