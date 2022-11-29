@@ -1,12 +1,12 @@
 import defaults from './default_conf_test.json' assert {type: 'json'};
-/* Get the initial config file from the local cache: */
+// Get the initial config file from the local cache:
 let	initConf = JSON.parse(localStorage.getItem("default_conf_test.json"));
-	initConf = defaults;
 if (initConf == undefined) {
 	initConf = defaults;
 }
 localStorage.setItem("default_conf_test.json", JSON.stringify(initConf));
 
+initConf = defaults; // Overwrite local storage (should be removed once the defaults are done).
 loadSideBar(initConf["startTime"], initConf["endTime"]);
 
 function loadSideBar(sTime, eTime) {
