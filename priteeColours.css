@@ -15,7 +15,7 @@ body {
 }
 
 #topBar {
-	width: calc(100vw - 20px);
+	width: calc(100% - 20px);
 	height: 5vh;
 	padding: 5px 10px;
 
@@ -130,6 +130,11 @@ body {
 .task {
 	z-index: 3;
 	width: 70vw;
+	padding: 15px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
 	position: absolute;
 

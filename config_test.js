@@ -62,7 +62,9 @@ function loadTasks() {
 		for (let i in tasks.array) {
 			const timeSpan = timeFromStart(tasks.array[i].startTime, tasks.array[i].endTime);
 			const newTask = document.createElement("div");
-
+			const taskText = document.createTextNode(tasks.array[i].description);
+		
+			newTask.appendChild(taskText);
 			newTask.className = "task";
 			newTask.style.height = 170 * timeSpan + "px";
 			newTask.style.top = 160 * timeFromStart(initConf.startTime, tasks.array[i].startTime) + 5 + "px";
