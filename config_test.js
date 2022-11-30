@@ -6,6 +6,11 @@ if (initConf == undefined) {
 	initConf = defaults;
 }
 localStorage.setItem("default_conf_test.json", JSON.stringify(initConf));
+// Get and load notes if there are any stored:
+let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
+if (tasks == undefined) {
+	localStorage.setItem("currentTasks", JSON.stringify(taskTest));
+}
 
 
 
@@ -33,10 +38,9 @@ function loadAreas(sTime, eTime) {
 	const taskBar = document.getElementById("taskBar");
 	const variables = getComputedStyle(document.querySelector(":root"));
 	const timeSpan = sTime > eTime ? (24 + eTime - sTime) : eTime - sTime;
-	bar.style.height = 160 * timeSpan + 10 + "px";
 
-	// This falls one short of the endTime:
-	while (sTime !== eTime) {
+	bar.style.height = 160 * (timeSpan + 1) + 10 + "px";
+	while (sTime !== eTime + 1) {
 		const newCell = document.createElement("div");
 		newCell.className = "sideElement";
 		const cellText = document.createTextNode(sTime);
@@ -48,28 +52,25 @@ function loadAreas(sTime, eTime) {
 		newTaskBack.style.backgroundColor = sTime % 2 ? variables.getPropertyValue("--subdivColour2") : variables.getPropertyValue("--subdivColour3");
 		taskBar.appendChild(newTaskBack);
 
-		sTime++;
 		if (sTime === 24)
 			sTime = 0;
+		else
+			sTime++;
 	}
 }
 
 function loadTasks() {
-	let taskZone = document.getElementById("taskContainer");
-	// Get and load notes if there are any stored:
-	let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
-	if (tasks != undefined) {
-		for (let i in tasks.array) {
-			const timeSpan = timeFromStart(tasks.array[i].startTime, tasks.array[i].endTime);
-			const newTask = document.createElement("div");
-			const taskText = document.createTextNode(tasks.array[i].description);
-		
-			newTask.appendChild(taskText);
-			newTask.className = "task";
-			newTask.style.height = 170 * timeSpan + "px";
-			newTask.style.top = 160 * timeFromStart(initConf.startTime, tasks.array[i].startTime) + 5 + "px";
-			taskZone.appendChild(newTask);
-		}
+	const taskZone = document.getElementById("taskContainer");
+
+	for (let i in tasks.array) {
+		const timeSpan = timeFromStart(tasks.array[i].startTime, tasks.array[i].endTime);
+		const newTask = document.createElement("div");
+		const taskText = document.createTextNode(tasks.array[i].description);
+	
+		newTask.appendChild(taskText);
+		newTask.className = "task";
+		newTask.style.height = 170 * timeSpan + "px";
+		newTask.style.top = 160 * timeFromStart(initConf.startTime, tasks.array[i].startTime) + 5 + "px";
+		taskZone.appendChild(newTask);
 	}
-	localStorage.setItem("currentTasks", JSON.stringify(taskTest));
 }
