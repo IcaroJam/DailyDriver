@@ -129,8 +129,8 @@ body {
 
 .task {
 	z-index: 3;
-	width: 70vw;
-	padding: 15px;
+	width: calc(70vw - 15px);
+	padding-left: 15px;
 
 	display: flex;
 	flex-direction: column;
