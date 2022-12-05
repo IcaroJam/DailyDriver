@@ -21,17 +21,35 @@ handleErrors();
 loadAreas(initConf.startTime, initConf.endTime);
 loadTasks();
 
+
+
 function handleErrors() {
 	if (initConf.startTime === initConf.endTime | initConf.startTime < 0 || initConf.endTime < 0 || initConf.startTime > 23 || initConf.endTime > 23) {
 		initConf.startTime = 9;
 		initConf.endTime = 18;
-		console.log("Bad start-end times, falling back to defaults.")
+		console.log("Bad start-end times, falling back to defaults.");
 	}
 }
 
 function timeFromStart(sTime, eTime) {
 	return sTime > eTime ? (24 + eTime - sTime) : eTime - sTime;
 }
+
+function timeString(time) {
+	const hours = Math.floor(time);
+	const mins = (time - hours) * 60;
+
+	return (`${hours}:${mins}`);
+}
+
+function stringTime(time) {
+	const hours = parseInt(time);
+	const minutes = parseInt(time.substring(time.indexOf(":") + 1)) / 60;
+
+	return (hours + minutes);
+}
+
+
 
 function loadAreas(sTime, eTime) {
 	const bar = document.getElementById("sideBar");
@@ -66,7 +84,7 @@ function loadTasks() {
 		const timeSpan = timeFromStart(tasks.array[i].startTime, tasks.array[i].endTime);
 		const newTask = document.createElement("div");
 		const taskText = document.createTextNode(tasks.array[i].description);
-	
+
 		newTask.appendChild(taskText);
 		newTask.className = "task";
 		newTask.style.height = 170 * timeSpan + "px";
