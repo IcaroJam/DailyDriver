@@ -1,4 +1,4 @@
-{
+const	testTask = {
 	"array": [
 		{
 			"description": "Hacer y disfrutar de un sandwich gourmet que me lleve al más allá",
@@ -22,3 +22,5 @@
 		} 
 	]
 }
+
+export { testTask as taskTest };

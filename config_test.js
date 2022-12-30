@@ -1,15 +1,18 @@
-import defaults from './default_conf_test.json' assert {type: 'JSON'};
-import taskTest from './testTasks.json' assert {type: 'JSON'};
+import { defaults } from './default_conf_test.js';
+import { taskTest } from './testTasks.js';
+
 // Get the initial config file from the local cache:
-let	initConf = JSON.parse(localStorage.getItem("default_conf_test.json"));
+let	initConf = JSON.parse(localStorage.getItem("default_conf_test"));
 if (initConf == undefined) {
 	initConf = defaults;
 }
-localStorage.setItem("default_conf_test.json", JSON.stringify(initConf));
+localStorage.setItem("default_conf_test", JSON.stringify(initConf));
+
 // Get and load notes if there are any stored:
 let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
 if (tasks == undefined) {
 	localStorage.setItem("currentTasks", JSON.stringify(taskTest));
+	tasks = taskTest;
 }
 
 
