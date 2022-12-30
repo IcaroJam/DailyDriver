@@ -143,3 +143,9 @@ body {
 	color: var(--titleBarColour);
 	background-color: grey;
 }
+
+#taskCreation {
+	position: absolute;
+	top: 50px;
+	left: 200px;
+}
