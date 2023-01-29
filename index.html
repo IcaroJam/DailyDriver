@@ -6,7 +6,21 @@
 		<link href="priteeColours.css" type="text/css" rel="stylesheet">
 		<!-- Script that goes through the config here? File to restore defaults needed. -->
 
-		<!-- <script src="config_test.js" type="module"></script> -->
+		<script src="config_test.js" type="module"></script>
+		<script>
+			// Popup and storage functions should be moved to their own file
+			function newTaskPop() {
+				const container = document.getElementById("newTaskDDMenu");
+
+				container.style.display = "block";
+			}
+
+			function newTaskHide() {
+				const container = document.getElementById("newTaskDDMenu");
+
+				container.style.display = "none";
+			}
+		</script>
 	</head>
 
 	<body>
@@ -15,18 +29,23 @@
 			<div id="titleBar"> <!-- Some kind of title(? Maybe the title is also the configs button. -->
 				Cute Notes uwu
 			</div>
-			<div class="roundIcons">B</div>
+			<div class="roundIcons" onclick="newTaskPop()">B</div>
 		</div>
 		<div id="sideBar"></div>
 		<div id="taskBar"></div>
 		<div id="taskContainer"></div>
 		<!-- Succesive divs with be js appended here. Config option to define amount of subdivisions. -->
-		<div id="taskCreation">
-			<form action="">
-				<label for="startTime">Start time: </label>
-				<input type="time" min="00:00" max="23:55" name="startTime">
-				<input type="submit" name="Done!">
+		<div id="newTaskDDMenu" style="display: none">
+			<div class="d-flex justify-content-between">
+			  <button id="close" onclick="newTaskHide()">X</button>
+			  <button type="submit" id="save">SAVE</button>
+			</div>
+			<h3 id="form-time"></h3>
+			<form id="myform">
+			  <hr class="line">
+			  <input type="text" id="description" name="description" placeholder="Event description"/>
+			  <hr class="line">
 			</form>
-		</div>
+		  </div>
 	</body>
 </html>

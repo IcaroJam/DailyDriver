@@ -15,8 +15,8 @@ body {
 }
 
 #topBar {
-	width: calc(100% - 20px);
-	height: 5vh;
+	min-width: calc(100% - 20px);
+	min-height: 5vh;
 	padding: 5px 10px;
 
 	z-index: 7;
@@ -31,8 +31,8 @@ body {
 }
 
 .roundIcons {
-	width: 5vh;
-	height: 5vh;
+	min-width: 5vh;
+	min-height: 5vh;
 
 	display: flex;
 	align-items: center;
@@ -144,8 +144,15 @@ body {
 	background-color: grey;
 }
 
-#taskCreation {
-	position: absolute;
-	top: 50px;
-	left: 200px;
-}
+#newTaskDDMenu {
+	position: fixed;
+	top: 7%;
+	right: 0%;
+	padding: 2vw;
+	/* transform: translate(-50%, -50%); */
+	z-index: 12;
+	background-color: #fff;
+	max-width: 900px;
+	width: 100%;
+	border-radius: 5px 0 0 5px;
+  }
