@@ -20,6 +20,19 @@
 
 				container.style.display = "none";
 			}
+
+			function newTaskSave() {
+				/*
+				Check if the time input values are correct
+					if they aren't, put the fields in red or something and display an error message next to them
+				if they are set display to none
+				create a new task object with the information passed in the form
+				(? try to keep the tasks in time order if possible
+				store that object in the local storage
+				wipe clean the task container and call the loadTasks function from config
+				profit?
+				*/
+			}
 		</script>
 	</head>
 
@@ -38,7 +51,7 @@
 		<div id="newTaskDDMenu" style="display: none">
 			<div class="d-flex justify-content-between">
 			  <button id="close" onclick="newTaskHide()">- X -</button>
-			  <button type="submit" id="save">SAVE</button>
+			  <button type="submit" id="save" onclick="newTaskSave()">SAVE</button>
 			</div>
 			<h3 id="form-time"></h3>
 			<form id="myform">
