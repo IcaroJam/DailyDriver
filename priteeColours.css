@@ -15,8 +15,8 @@ body {
 }
 
 #topBar {
-	min-width: calc(100% - 20px);
-	min-height: 5vh;
+	width: calc(100% - 20px);
+	height: 5vh;
 	padding: 5px 10px;
 
 	z-index: 7;
@@ -145,14 +145,20 @@ body {
 }
 
 #newTaskDDMenu {
-	position: fixed;
-	top: 7%;
-	right: 0%;
-	padding: 2vw;
-	/* transform: translate(-50%, -50%); */
 	z-index: 12;
-	background-color: #fff;
 	width: 30%;
-	height: 80%;
+	height: 80vh;
+	padding: 2vw;
+
+	position: fixed;
+	bottom: 5vh;
+	right: 0;
+
 	border-radius: 50px 0 0 50px;
+
+	background-color: #fff;
+  }
+
+  #close {
+	border-radius: 50px 0 0 0;
   }
