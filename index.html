@@ -49,15 +49,20 @@
 		<div id="taskContainer"></div>
 		<!-- Succesive divs with be js appended here. Config option to define amount of subdivisions. -->
 		<div id="newTaskDDMenu" style="display: none">
-			<div class="d-flex justify-content-between">
-			  <button id="close" onclick="newTaskHide()">- X -</button>
-			  <button type="submit" id="save" onclick="newTaskSave()">SAVE</button>
-			</div>
-			<h3 id="form-time"></h3>
 			<form id="myform">
-			  <hr class="line">
-			  <input type="text" id="description" name="description" placeholder="Event description"/>
-			  <hr class="line">
+				<div class="d-flex justify-content-between">
+					<input type="reset" value="- X -" id="close" onclick="newTaskHide()">
+					<button type="submit" id="save" onclick="newTaskSave()">SAVE</button>
+				</div>
+				<hr class="line">
+				<input type="number" step="1" min="0" max="23" id="newTaskStartHour" name="newTaskStartHour" placeholder="From..." style="width: 20%; float: left;"/>
+				<input type="number" step="5" min="0" max="59" id="newTaskStartMin" name="newTaskStartMin" placeholder="From..." style="width: 20%;"/>
+				<hr class="line">
+				<input type="number" step="1" min="0" max="23" id="newTaskEndHour" name="newTaskEndHour" placeholder="To..." style="width: 20%; float: left;"/>
+				<input type="number" step="5" min="0" max="59" id="newTaskEndMin" name="newTaskEndMin" placeholder="To..." style="width: 20%;"/>
+				<hr class="line">
+				<input type="text" id="description" name="description" placeholder="Notem ipsum" style="width: 100%;"/>
+				<hr class="line">
 			</form>
 		  </div>
 	</body>
