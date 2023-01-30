@@ -40,7 +40,8 @@
 					newTask.endHour < 0 || newTask.endHour > 23 ||
 					newTask.endMin < 0 || newTask.endMin > 59 ||
 					newTask.startHour >= newTask.endHour ||
-					(newTask.startHour == newTask.endHour && newTask.startMin >= newTask.endMin)
+					(newTask.startHour == newTask.endHour && newTask.startMin >= newTask.endMin) ||
+					newTask.description == ""
 				) {return;}
 				//	if they aren't, put the fields in red or something and display an error message next to them
 				//if they are set display to none
