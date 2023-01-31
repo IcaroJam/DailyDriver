@@ -26,6 +26,8 @@ function newTaskSave() {
 	}
 	//Check if the time input values are correct
 	if (
+		isNaN(newTask.startHour) || newTask.startMin == 0 ||
+		isNaN(newTask.endHour) || newTask.endMin == 0 ||
 		newTask.startHour < 0 || newTask.startHour > 23 ||
 		newTask.startMin < 0 || newTask.startMin > 59 ||
 		newTask.endHour < 0 || newTask.endHour > 23 ||
