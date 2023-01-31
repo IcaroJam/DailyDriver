@@ -28,12 +28,12 @@ function newTaskSave() {
 	if (
 		newTask.startHour < 0 || newTask.startHour > 23 ||
 		newTask.startMin < 0 || newTask.startMin > 59 ||
-		newTask.endHour < 0 || newTask.endHour > 23 |//|
+		newTask.endHour < 0 || newTask.endHour > 23 ||
 		newTask.endMin < 0 || newTask.endMin > 59 ||
 		newTask.startHour >= newTask.endHour ||
 		(newTask.startHour == newTask.endHour && newTask.startMin >= newTask.endMin) ||
 		newTask.description == ""
-	) {console.log("A"); return false;}
+	) {return;}
 	//	if they aren't, put the fields in red or something and display an error message next to them
 	//if they are set display to none
 	//create a new task object with the information passed in the form

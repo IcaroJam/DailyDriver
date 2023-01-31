@@ -23,11 +23,10 @@
 		<!-- Succesive divs with be js appended here. Config option to define amount of subdivisions. -->
 
 		<div id="newTaskDDMenu" style="display: none">
-			<script src="task_management.js"></script> <!-- Handle form submission and newTask window opening and closing. -->
-			<form id="newTaskForm">
+			<form id="newTaskForm" onsubmit="return false">
 				<div class="d-flex justify-content-between">
 					<input type="reset" value="- X -" id="close" onclick="newTaskHide()">
-					<input type="button" value="Save" id="save" onclick="newTaskSave()">
+					<input type="submit" value="Save" id="save" onclick="newTaskSave()">
 				</div>
 				<hr class="line">
 				<input type="number" step="1" min="0" max="23" id="newTaskStartHour" name="newTaskStartHour" placeholder="From..." style="width: 20%; float: left;"/>
@@ -39,6 +38,7 @@
 				<input type="text" id="description" name="newTaskDescription" placeholder="Notem ipsum" style="width: 100%;"/>
 				<hr class="line">
 			</form>
+			<script src="task_management.js"></script> <!-- Handle form submission and newTask window opening and closing. -->
 		  </div>
 	</body>
 </html>
