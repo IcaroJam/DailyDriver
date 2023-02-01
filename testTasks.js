@@ -6,8 +6,8 @@ const	testTask = {
 			startMin: 30,
 			startTime: 10.5,
 			endHour: 12,
-			endMin: 15,
-			endTime: 12.25
+			endMin: 0,
+			endTime: 12
 		}, 
 		{
 			description: "uoooooouUoOOuoOUuUoUoOO",

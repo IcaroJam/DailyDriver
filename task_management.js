@@ -54,16 +54,14 @@ function newTaskSave() {
 
 	//Append the new task object with the information passed in the form
 	tasks.array.push(newTask);
-	console.log(tasks);
 
 	//Sort the task object
-	tasks.array.sort(function(a, b){
+	tasks.array.sort(function(a, b) {
 		if (a.startHour != b.startHour)
 			return a.startHour - b.startHour;
 		else
 			return a.startMin - b.startMin;
 	});
-	console.log(tasks);
 
 	//Store that object in the local storage
 	localStorage.setItem("currentTasks", JSON.stringify(tasks));
@@ -77,7 +75,7 @@ function newTaskSave() {
 	}
 
 	//Call the loadTasks function from config
-	loadTasks();
+	//loadTasks();
 
 	//profit?
 }

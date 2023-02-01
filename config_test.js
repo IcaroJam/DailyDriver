@@ -15,6 +15,8 @@ if (tasks == undefined) {
 	tasks = taskTest;
 }
 
+// Define css colour cssVars
+const cssVars = getComputedStyle(document.querySelector(":root"));
 
 
 initConf = defaults; // Overwrite local storage (should be removed once the defaults are done).
@@ -57,7 +59,6 @@ function stringTime(time) {
 function loadAreas(sTime, eTime) {
 	const bar = document.getElementById("sideBar");
 	const taskBar = document.getElementById("taskBar");
-	const variables = getComputedStyle(document.querySelector(":root"));
 	const timeSpan = sTime > eTime ? (24 + eTime - sTime) : eTime - sTime;
 
 	bar.style.height = 160 * (timeSpan + 1) + 10 + "px";
@@ -70,7 +71,7 @@ function loadAreas(sTime, eTime) {
 
 		const newTaskBack = document.createElement("div");
 		newTaskBack.className = "taskElement";
-		newTaskBack.style.backgroundColor = sTime % 2 ? variables.getPropertyValue("--subdivColour2") : variables.getPropertyValue("--subdivColour3");
+		newTaskBack.style.backgroundColor = sTime % 2 ? cssVars.getPropertyValue("--subdivColour2") : cssVars.getPropertyValue("--subdivColour3");
 		taskBar.appendChild(newTaskBack);
 
 		if (sTime === 24)
@@ -92,6 +93,7 @@ function loadTasks() {
 		newTask.className = "task";
 		newTask.style.height = 170 * timeSpan + "px";
 		newTask.style.top = 160 * timeFromStart(initConf.startTime, tasks.array[i].startTime) + 5 + "px";
+		newTask.style.backgroundColor = i % 2 ? cssVars.getPropertyValue("--sideBarElementColour") : cssVars.getPropertyValue("--sideBarBackColour");
 		taskZone.appendChild(newTask);
 	}
 }
