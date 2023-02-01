@@ -4,6 +4,9 @@ const form = document.getElementById("newTaskForm");
 // Define the newTask window element
 const container = document.getElementById("newTaskDDMenu");
 
+// Take the current tasks from local storage
+const tasks = JSON.parse(localStorage.getItem("currentTasks"));
+
 function newTaskPop() {
 	container.style.display = "block";
 }
@@ -32,8 +35,8 @@ function newTaskSave() {
 		newTask.startMin < 0 || newTask.startMin > 59 ||
 		newTask.endHour < 0 || newTask.endHour > 23 ||
 		newTask.endMin < 0 || newTask.endMin > 59 ||
-		newTask.startHour >= newTask.endHour ||
-		(newTask.startHour == newTask.endHour && newTask.startMin >= newTask.endMin) ||
+		newTask.startHour > newTask.endHour ||
+		(newTask.startHour == newTask.endHour && newTask.startMin > newTask.endMin) ||
 		newTask.description == ""
 	) {
 	//	if they aren't, put the fields in red or something and display an error message next to them
@@ -50,8 +53,17 @@ function newTaskSave() {
 	newTask.endTime = newTask.endHour + newTask.endMin;
 
 	//Append the new task object with the information passed in the form
-	let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
 	tasks.array.push(newTask);
+	console.log(tasks);
+
+	//Sort the task object
+	tasks.array.sort(function(a, b){
+		if (a.startHour != b.startHour)
+			return a.startHour - b.startHour;
+		else
+			return a.startMin - b.startMin;
+	});
+	console.log(tasks);
 
 	//Store that object in the local storage
 	localStorage.setItem("currentTasks", JSON.stringify(tasks));
@@ -65,7 +77,7 @@ function newTaskSave() {
 	}
 
 	//Call the loadTasks function from config
-	
+	loadTasks();
 
 	//profit?
 }
