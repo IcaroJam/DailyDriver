@@ -35,14 +35,37 @@ function newTaskSave() {
 		newTask.startHour >= newTask.endHour ||
 		(newTask.startHour == newTask.endHour && newTask.startMin >= newTask.endMin) ||
 		newTask.description == ""
-	) {return;}
+	) {
 	//	if they aren't, put the fields in red or something and display an error message next to them
-	//if they are set display to none
-	//create a new task object with the information passed in the form
-	//(? try to keep the tasks in time order if possible
-	//store that object in the local storage
-	//wipe clean the task container and call the loadTasks function from config
-	//profit?
+		return;
+	}
+	//if they are set display to none and reset form fields
 	newTaskHide();
 	form.reset();
+	
+	//Do some final calculations
+	newTask.startMin /= 60;
+	newTask.startTime = newTask.startHour + newTask.startMin;
+	newTask.endMin /= 60;
+	newTask.endTime = newTask.endHour + newTask.endMin;
+
+	//Append the new task object with the information passed in the form
+	let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
+	tasks.array.push(newTask);
+
+	//Store that object in the local storage
+	localStorage.setItem("currentTasks", JSON.stringify(tasks));
+
+	//Clean the current displayed tasks to reload them immeadiately
+	const taskZone = document.getElementById("taskContainer");
+	let vanishingTask = taskZone.lastElementChild;
+	while (vanishingTask) {
+		taskZone.removeChild(vanishingTask);
+		vanishingTask = taskZone.lastElementChild;
+	}
+
+	//Call the loadTasks function from config
+	
+
+	//profit?
 }
