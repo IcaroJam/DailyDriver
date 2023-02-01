@@ -17,17 +17,17 @@ function newTaskSave() {
 		description:	document.getElementsByName("newTaskDescription")[0].value,
 
 		startHour:		parseInt(document.getElementsByName("newTaskStartHour")[0].value),
-		startMin:		document.getElementsByName("newTaskStartMin")[0].value / 60,
+		startMin:		document.getElementsByName("newTaskStartMin")[0].value,
 		startTime:		0,
 
 		endHour:		parseInt(document.getElementsByName("newTaskEndHour")[0].value),
-		endMin:			document.getElementsByName("newTaskEndMin")[0].value / 60,
+		endMin:			document.getElementsByName("newTaskEndMin")[0].value,
 		endTime:		0,
 	}
 	//Check if the time input values are correct
 	if (
-		isNaN(newTask.startHour) || newTask.startMin == 0 ||
-		isNaN(newTask.endHour) || newTask.endMin == 0 ||
+		isNaN(newTask.startHour) || isNaN(newTask.startMin) ||
+		isNaN(newTask.endHour) || isNaN(newTask.endMin) ||
 		newTask.startHour < 0 || newTask.startHour > 23 ||
 		newTask.startMin < 0 || newTask.startMin > 59 ||
 		newTask.endHour < 0 || newTask.endHour > 23 ||
