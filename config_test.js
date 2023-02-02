@@ -92,7 +92,7 @@ function loadTasks() {
 
 		newTask.appendChild(taskText);
 		newTask.className = "task";
-		newTask.style.height = 170 * timeSpan + "px";
+		newTask.style.height = 160 * timeSpan + "px";
 		newTask.style.top = 160 * timeFromStart(initConf.startTime, tasks.array[i].startTime) + 5 + "px";
 		newTask.style.backgroundColor = i % 2 ? cssVars.getPropertyValue("--sideBarElementColour") : cssVars.getPropertyValue("--sideBarBackColour");
 		taskZone.appendChild(newTask);
