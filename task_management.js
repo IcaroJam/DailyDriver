@@ -4,9 +4,6 @@ const form = document.getElementById("newTaskForm");
 // Define the newTask window element
 const container = document.getElementById("newTaskDDMenu");
 
-// Take the current tasks from local storage
-const tasks = JSON.parse(localStorage.getItem("currentTasks"));
-
 function newTaskPop() {
 	container.style.display = "block";
 }
@@ -74,8 +71,8 @@ function newTaskSave() {
 		vanishingTask = taskZone.lastElementChild;
 	}
 
-	//Call the loadTasks function from config
-	//loadTasks();
+	//Call the loadTasks function globalized from config
+	loadTasks();
 
 	//profit?
 }
