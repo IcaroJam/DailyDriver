@@ -9,7 +9,7 @@ if (initConf == undefined) {
 localStorage.setItem("default_conf_test", JSON.stringify(initConf));
 
 // Get and load notes if there are any stored:
-const	tasks = JSON.parse(localStorage.getItem("currentTasks"));
+let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
 window.tasks = tasks; // Make it global so it can be used outside module scope.
 if (tasks == undefined) {
 	localStorage.setItem("currentTasks", JSON.stringify(taskTest));
