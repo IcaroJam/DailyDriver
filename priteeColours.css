@@ -148,8 +148,8 @@ body {
 #newTaskDDMenu {
 	z-index: 12;
 	width: 30%;
-	height: calc(91vh - 10px);
-	padding: 2vh 2vh;
+	height: calc(95vh - 70px);
+	padding: 30px;
 
 	position: fixed;
 	bottom: 0vh;
