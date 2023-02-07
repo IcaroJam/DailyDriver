@@ -23,20 +23,25 @@
 		<!-- Succesive divs will be appended here with js. Config option to define amount of subdivisions. -->
 
 		<div id="newTaskDDMenu" style="display: none">
-			<form id="newTaskForm" onsubmit="return false"> <!-- Form submission handled with javascript. The onsubmit prevents the page being refreshed and the form being reset. -->
+			<form id="newTaskForm" onsubmit="return false" style="height: 81%;"> <!-- Form submission handled with javascript. The onsubmit prevents the page being refreshed and the form being reset. -->
 				<div style="display: flex;">
-					<input type="reset" value="- X -" id="close" onclick="newTaskHide()">
-					<input type="submit" value="Save" id="save" onclick="newTaskSave()">
+					<input class="newTaskColor" type="reset" value="- X -" id="close" onclick="newTaskHide()">
+					<input class="newTaskColor" type="submit" value="Save" id="save" onclick="newTaskSave()">
 				</div>
 				<hr class="line">
-				<input type="number" step="1" min="0" max="23" id="newTaskStartHour" name="newTaskStartHour" placeholder="From..." style="width: 20%; float: left;"/>
-				<input type="number" step="5" min="0" max="59" id="newTaskStartMin" name="newTaskStartMin" placeholder="From..." style="width: 20%;"/>
+				<div style="display: flex;">
+					<input class="newTaskColor" type="number" step="1" min="0" max="23" id="newTaskStartHour" name="newTaskStartHour" placeholder="From..."/>
+					<input class="newTaskColor" type="number" step="5" min="0" max="59" id="newTaskStartMin" name="newTaskStartMin" placeholder="From..."/>
+				</div>
 				<hr class="line">
-				<input type="number" step="1" min="0" max="23" id="newTaskEndHour" name="newTaskEndHour" placeholder="To..." style="width: 20%; float: left;"/>
-				<input type="number" step="5" min="0" max="59" id="newTaskEndMin" name="newTaskEndMin" placeholder="To..." style="width: 20%;"/>
-				<hr class="line"newTaskHide()>
-				<input type="text" id="description" name="newTaskDescription" placeholder="Notem ipsum" style="width: 100%;"/>
+				<div style="display: flex;">
+					<input class="newTaskColor" type="number" step="1" min="0" max="23" id="newTaskEndHour" name="newTaskEndHour" placeholder="To..."/>
+					<input class="newTaskColor" type="number" step="5" min="0" max="59" id="newTaskEndMin" name="newTaskEndMin" placeholder="To..."/>
+				</div>
 				<hr class="line">
+				<div style="display: flex; height: 100%;">
+					<input class="newTaskColor" type="text" id="description" name="newTaskDescription" placeholder="Notem ipsum"/>
+				</div>
 			</form>
 			<script src="task_management.js"></script> <!-- Handle form submission and newTask window opening and closing. -->
 		  </div>

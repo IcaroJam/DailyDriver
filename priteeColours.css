@@ -160,16 +160,20 @@ body {
 	background-color: var(--titleBarColour);
 }
 
-#close {
+.newTaskColor {
 	width: 50%;
 	height: 50px;
 
-	border-color: var(--titleBarColour);
-	border-style: solid;
-	border-radius: 35px 0 0 0;
+	border-style: none;
 
 	color: var(--titleBarColour);
 	background-color: var(--subdivColour1);
+}
+
+#close {
+	border-color: var(--titleBarColour);
+	border-style: solid;
+	border-radius: 35px 0 0 0;
 }
 
 #close:hover {
@@ -180,14 +184,8 @@ body {
 }
 
 #save {
-	width: 50%;
-	height: 50px;
-
 	border-color: var(--titleBarColour);
 	border-style: solid;
-
-	color: var(--titleBarColour);
-	background-color: var(--subdivColour1);
 }
 
 #save:hover {
@@ -195,4 +193,16 @@ body {
 
 	color: var(--subdivColour1);
 	background-color: var(--titleBarColour);
+}
+
+.line {
+	border-style: solid;
+	border-color: var(--subdivColour1);
+}
+
+#description {
+	width: 100%;
+	height: 100%;
+
+	border-radius: 0 0 0 35px;
 }
