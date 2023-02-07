@@ -161,12 +161,38 @@ body {
 }
 
 #close {
-	width: 50px;
+	width: 50%;
+	height: 50px;
 
-	border-color: var(--subdivColour1);
+	border-color: var(--titleBarColour);
 	border-style: solid;
-	border-radius: 50px 0 0 0;
+	border-radius: 35px 0 0 0;
 
 	color: var(--titleBarColour);
 	background-color: var(--subdivColour1);
+}
+
+#close:hover {
+	border-color: var(--subdivColour1);
+
+	color: var(--subdivColour1);
+	background-color: var(--titleBarColour);
+}
+
+#save {
+	width: 50%;
+	height: 50px;
+
+	border-color: var(--titleBarColour);
+	border-style: solid;
+
+	color: var(--titleBarColour);
+	background-color: var(--subdivColour1);
+}
+
+#save:hover {
+	border-color: var(--subdivColour1);
+
+	color: var(--subdivColour1);
+	background-color: var(--titleBarColour);
 }

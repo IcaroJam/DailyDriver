@@ -24,7 +24,7 @@
 
 		<div id="newTaskDDMenu" style="display: none">
 			<form id="newTaskForm" onsubmit="return false"> <!-- Form submission handled with javascript. The onsubmit prevents the page being refreshed and the form being reset. -->
-				<div>
+				<div style="display: flex;">
 					<input type="reset" value="- X -" id="close" onclick="newTaskHide()">
 					<input type="submit" value="Save" id="save" onclick="newTaskSave()">
 				</div>
