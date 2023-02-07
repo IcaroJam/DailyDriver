@@ -148,18 +148,25 @@ body {
 #newTaskDDMenu {
 	z-index: 12;
 	width: 30%;
-	height: 80vh;
-	padding: 2vw;
+	height: calc(91vh - 10px);
+	padding: 2vh 2vh;
 
 	position: fixed;
-	bottom: 5vh;
+	bottom: 0vh;
 	right: 0;
 
 	border-radius: 50px 0 0 50px;
 
-	background-color: #fff;
+	background-color: var(--titleBarColour);
 }
 
 #close {
+	width: 50px;
+
+	border-color: var(--subdivColour1);
+	border-style: solid;
 	border-radius: 50px 0 0 0;
+
+	color: var(--titleBarColour);
+	background-color: var(--subdivColour1);
 }
