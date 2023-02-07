@@ -142,7 +142,7 @@ body {
 	border-radius: 50px 0 0 50px;
 
 	color: var(--titleBarColour);
-	background-color: grey;
+	background-color: var(--sideBarElementColour);
 }
 
 #newTaskDDMenu {
@@ -158,8 +158,8 @@ body {
 	border-radius: 50px 0 0 50px;
 
 	background-color: #fff;
-  }
+}
 
-  #close {
+#close {
 	border-radius: 50px 0 0 0;
-  }
+}
