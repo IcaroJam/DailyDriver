@@ -164,7 +164,8 @@ body {
 	width: 50%;
 	height: 50px;
 
-	border-style: none;
+	border-color: var(--titleBarColour);
+	border-style: solid;
 
 	color: var(--titleBarColour);
 	background-color: var(--subdivColour1);
