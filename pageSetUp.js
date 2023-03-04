@@ -64,22 +64,23 @@ function loadAreas(sTime, eTime) {
 	const timeSpan = sTime > eTime ? (24 + eTime - sTime) : eTime - sTime;
 
 	bar.style.height = 160 * (timeSpan + 1) + 10 + "px";
-	while (sTime !== eTime + 1) {
+	let currNum;
+	for (let i = 0; i <= timeSpan; i++) {
+		currNum = sTime + i;
+		
 		const newCell = document.createElement("div");
 		newCell.className = "sideElement";
-		const cellText = document.createTextNode(sTime);
+		const cellText = document.createTextNode(currNum);
 		newCell.appendChild(cellText);
 		bar.appendChild(newCell);
 
 		const newTaskBack = document.createElement("div");
 		newTaskBack.className = "taskElement";
-		newTaskBack.style.backgroundColor = sTime % 2 ? cssVars.getPropertyValue("--subdivColour2") : cssVars.getPropertyValue("--subdivColour3");
+		newTaskBack.style.backgroundColor = currNum % 2 ? cssVars.getPropertyValue("--subdivColour2") : cssVars.getPropertyValue("--subdivColour3");
 		taskBar.appendChild(newTaskBack);
 
-		if (sTime === 24)
-			sTime = 0;
-		else
-			sTime++;
+		if (currNum === 23)
+			sTime = -i - 1;
 	}
 }
 
