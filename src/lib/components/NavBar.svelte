@@ -2,6 +2,8 @@
 	
 </script>
 
+
+
 <nav>
 	<div class="roundIcons" onclick="localStorage.removeItem('currentTasks'); location.reload()">RESET TASKS</div>
 	<div id="titleBar"> <!-- Some kind of title(? Maybe the title is also the configs button. -->
@@ -10,9 +12,11 @@
 	<div class="roundIcons" onclick="newTaskPop()">B</div>
 </nav>
 
+
+
 <style>
 	nav {
-		width: calc(100% - 20px);
+		width: 100%;
 		height: 5vh;
 		padding: 5px 10px;
 	
@@ -38,6 +42,8 @@
 		border-radius: 100%;
 	
 		background-color: var(--subdivColour2, lightsteelblue);
+
+		text-align: center;
 	}
 
 	#titleBar {
