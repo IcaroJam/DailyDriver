@@ -2,19 +2,11 @@ import { defaults } from './default_conf_test.js';
 //import { taskTest } from './testTasks.js';
 
 // Get the initial config file from the local cache:
-let	initConf = JSON.parse(localStorage.getItem("configDefaults"));
-if (initConf == undefined) {
-	initConf = defaults;
-}
+let	initConf = JSON.parse(localStorage.getItem("configDefaults")) || defaults;
 localStorage.setItem("configDefaults", JSON.stringify(initConf));
 
 // Get and load notes if there are any stored:
-let	tasks = JSON.parse(localStorage.getItem("currentTasks"));
-if (tasks == undefined) {
-	//localStorage.setItem("currentTasks", JSON.stringify(taskTest));
-	//tasks = taskTest;
-	tasks = {array: []};
-}
+let	tasks = JSON.parse(localStorage.getItem("currentTasks")) || {array: []};
 window.tasks = tasks; // Make it global so it can be used outside module scope.
 
 // Define css colour cssVars
