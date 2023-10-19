@@ -10,6 +10,10 @@
 	</head>
 
 	<body>
+
+
+
+		<!-- To navbar component -->
 		<div id="topBar">
 			<div class="roundIcons" onclick="localStorage.removeItem('currentTasks'); location.reload()">RESET TASKS</div>
 			<div id="titleBar"> <!-- Some kind of title(? Maybe the title is also the configs button. -->
@@ -17,11 +21,22 @@
 			</div>
 			<div class="roundIcons" onclick="newTaskPop()">B</div>
 		</div>
+
+
+
 		<div id="sideBar"></div>
+
+
+
 		<div id="taskBar"></div>
+
+
+
 		<div id="taskContainer"></div>
 		<!-- Succesive divs will be appended here with js. Config option to define amount of subdivisions. -->
 
+
+		<!-- To taskCreator component -->
 		<div id="newTaskDDMenu" style="display: none">
 			<form id="newTaskForm" onsubmit="return false" style="height: 81%;"> <!-- Form submission handled with javascript. The onsubmit prevents the page being refreshed and the form being reset. -->
 				<div style="display: flex;">
@@ -45,5 +60,8 @@
 			</form>
 			<script src="task_management.js"></script> <!-- Handle form submission and newTask window opening and closing. -->
 		  </div>
+
+
+
 	</body>
 </html>
