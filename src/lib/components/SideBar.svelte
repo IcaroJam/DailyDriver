@@ -16,8 +16,8 @@
 
 <style>
 	#sideBar {
-		height: 100%;
 		width: 120px;
+		height: 100%;
 
 		padding-right: 10px;
 
