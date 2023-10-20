@@ -7,10 +7,25 @@
 
 
 <NavBar />
-<SideBar />
-<TaskBar />
+<div class="scrollable-container">
+	<SideBar />
+	<TaskBar />
+</div>
 
 
 
 <style>
+	.scrollable-container {
+		width: 100%;
+		height: calc(100% - var(--navHeight));
+
+		padding-bottom: 10px;
+
+		position: absolute;
+		top: var(--navHeight);
+
+		display: flex;
+
+		overflow-y: auto;
+	}
 </style>

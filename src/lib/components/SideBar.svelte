@@ -17,15 +17,9 @@
 <style>
 	#sideBar {
 		width: 120px;
-		height: 100%;
 
 		padding-right: 10px;
 
-		position: absolute;
-		top: var(--navHeight);
-	
-		z-index: 3;
-	
 		border-radius: 0 0 30px 0;
 		background-color: var(--sideBarBackColour);
 	}

@@ -16,18 +16,20 @@
 	#taskBar {
 		width: 100%;
 		
-		position: absolute;
-		top: var(--navHeight);
-
-		display: flex;
-		flex-direction: column;
+		position: relative;
+		top: 0;
 	}
 	
 	.taskElement {
-		width: 95%;
+		width: 100%;
 		height: 100px;
 
+		z-index: -1;
+
 		margin-top: 10px;
+
+		position: relative;
+		right: 5%;
 		
 		border-radius: 0 30px 30px 0;
 	}
