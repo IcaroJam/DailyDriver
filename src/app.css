@@ -16,6 +16,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	scrollbar-color: var(--titleBarColour) transparent;
+}
+
 body {
 	margin: 0;
 
