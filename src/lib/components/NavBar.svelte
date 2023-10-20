@@ -56,10 +56,42 @@
 	#titleBar {
 		width: 75%;
 		height: 100%;
-	
+
+		padding: 0 20px;
+
+		justify-content: space-between;
+
 		background-color: var(--titleBarColour, lightsteelblue);
 	
 		font-size: 2em;
 		color: var(--titleTextColour, slategrey);
+
+		transition: font-size .2s ease;
+	}
+
+	#titleBar::after, #titleBar::before {
+		content: "\2304";
+
+		color: transparent;
+
+		transition: color .1s ease, transform .5s ease-out;
+	}
+
+	#titleBar::after {
+		transform: rotate(90deg);
+	}
+
+	#titleBar::before {
+		transform: rotate(-90deg);
+	}
+
+	#titleBar:hover {
+		font-size: 1.8em;
+	}
+
+	#titleBar:hover::after, #titleBar:hover::before {
+		color: inherit;
+
+		transform: unset;
 	}
 </style>
