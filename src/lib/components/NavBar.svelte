@@ -33,9 +33,6 @@
 	}
 
 	nav {
-		--navHeight: 60px;
-		--navIconSize: 50px;
-
 		width: 100%;
 		height: var(--navHeight);
 		padding: calc((var(--navHeight) - var(--navIconSize)) / 2) 10px;

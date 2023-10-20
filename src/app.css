@@ -7,6 +7,9 @@
 	--titleTextColour: #567356;
 	--sideBarBackColour: #7d6750;
 	--sideBarElementColour: #656045;
+
+	--navHeight: 60px;
+	--navIconSize: 50px;
 }
 
 * {
