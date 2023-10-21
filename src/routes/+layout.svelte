@@ -1,4 +1,6 @@
 <script>
+	import NavBar from "../lib/components/NavBar.svelte";
+
 	import "../app.css"
 	import { defaults } from "../stores";
 
@@ -8,4 +10,5 @@
 
 
 
+<NavBar />
 <slot />

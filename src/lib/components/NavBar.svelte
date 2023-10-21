@@ -35,9 +35,9 @@
 	nav {
 		width: 100%;
 		height: var(--navHeight);
+
 		padding: calc((var(--navHeight) - var(--navIconSize)) / 2) 10px;
 	
-		z-index: 7;
 		justify-content: space-between;
 	
 		background-color: var(--mainContainerColour, slategrey);
