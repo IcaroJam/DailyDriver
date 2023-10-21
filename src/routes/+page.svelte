@@ -1,6 +1,6 @@
 <script>
-    import SideBar from "../lib/components/SideBar.svelte";
-	import TaskBar from "../lib/components/TaskBar.svelte";
+    import SideBar from "$lib/components/SideBar.svelte";
+	import TaskBar from "$lib/components/TaskBar.svelte";
 </script>
 
 
