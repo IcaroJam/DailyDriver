@@ -1,5 +1,5 @@
 <script>
-	
+	import AddTaskDropDown from "$lib/components/AddTaskDropDown.svelte";
 </script>
 
 
@@ -23,6 +23,7 @@
 		</svg>
 	</div>
 </nav>
+<AddTaskDropDown />
 
 
 
