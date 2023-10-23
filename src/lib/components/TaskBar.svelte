@@ -1,12 +1,19 @@
 <script>
-    import {defaults} from "../../stores";
+    import {defaults, tasksList} from "../../stores";
+	import Task from "$lib/components/Task.svelte";
 </script>
 
 
 
 <div id="taskBar">
+	<!-- Decorative timespan dividers: -->
 	{#each $defaults.timeSpan as hour}
-		<div class={hour % 2 ? "taskElement colour1" : "taskElement colour2"}></div>
+		<div class={hour % 2 ? "deco colour1" : "deco colour2"}></div>
+	{/each}
+
+	<!-- The tasks themselves: -->
+	{#each $tasksList as taskinfo}
+		<Task {...taskinfo} />
 	{/each}
 </div>
 
@@ -20,7 +27,7 @@
 		top: 0;
 	}
 	
-	.taskElement {
+	.deco {
 		width: 100%;
 		height: 100px;
 
