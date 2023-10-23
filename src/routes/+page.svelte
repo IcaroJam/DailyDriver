@@ -1,6 +1,11 @@
 <script>
     import SideBar from "$lib/components/SideBar.svelte";
 	import TaskBar from "$lib/components/TaskBar.svelte";
+
+	import { defaults } from "../stores";
+
+	// Add useful stuff to the config:
+	$defaults.timeSpan = [...Array($defaults.endTime).keys()].filter((num) => num >= $defaults.startTime);
 </script>
 
 

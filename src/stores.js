@@ -5,5 +5,5 @@ import { defaults as configFile } from "./defaultConf";
 export const defaults = writable(configFile);
 
 export const tasksList = writable(
-	browser && JSON.parse(localStorage.getItem("dailydriver_tasks") || [])
+	browser && JSON.parse(localStorage.getItem("dailydriver_tasks")) || []
 );
