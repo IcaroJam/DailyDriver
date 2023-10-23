@@ -42,7 +42,7 @@
 	
 		background-color: var(--mainContainerColour, slategrey);
 	
-		position: fixed;
+		position: sticky;
 	}
 
 	nav > div {

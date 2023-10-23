@@ -1,6 +1,7 @@
 <script>
     import SideBar from "$lib/components/SideBar.svelte";
 	import TaskBar from "$lib/components/TaskBar.svelte";
+	import AddTaskDropDown from "$lib/components/AddTaskDropDown.svelte";
 
 	import { defaults } from "../stores";
 
@@ -14,6 +15,7 @@
 	<div>
 		<SideBar />
 		<TaskBar />
+		<!-- <AddTaskDropDown /> -->
 	</div>
 	<footer>
 		<small>
@@ -27,10 +29,7 @@
 <style>
 	.scrollable-container {
 		width: 100%;
-		height: calc(100% - var(--navHeight));
-
-		position: relative;
-		top: var(--navHeight);
+		height: 100%;
 
 		overflow-y: auto;
 	}
