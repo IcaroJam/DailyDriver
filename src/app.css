@@ -14,6 +14,7 @@
 
 * {
 	box-sizing: border-box;
+	font-size: small;
 }
 
 html {
@@ -30,4 +31,10 @@ body {
 	margin: 0;
 
 	background-color: var(--mainContainerColour, slategrey);
+}
+
+@media (min-width: 768px) {
+	* {
+		font-size: medium;
+	}
 }

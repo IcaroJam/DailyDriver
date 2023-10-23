@@ -82,6 +82,7 @@
 		background-color: var(--titleBarColour, lightsteelblue);
 	
 		font-size: 2em;
+		text-align: center;
 		color: var(--titleTextColour, slategrey);
 
 		transition: font-size .4s ease;
