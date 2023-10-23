@@ -4,7 +4,8 @@
 
 
 {#if props !== undefined}
-	<div class="task">
+	<!-- There must be a better, less fucking ugly way of doing this... -->
+	<div class="task" style={`height: ${110 * props.timeSpan}px; top: calc(var(--navHeight) + ${110 * props.timeSpan}px)`}>
 		{props.description}
 	</div>
 {/if}
@@ -21,7 +22,6 @@
 		justify-content: center;
 	
 		position: absolute;
-		top: 50px;
 		right: 0;
 	
 		border-radius: 30px 0 0 30px;

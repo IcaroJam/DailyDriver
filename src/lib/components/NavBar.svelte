@@ -3,7 +3,7 @@
 
 	let newTaskShow = false;
 
-	const toggleNewTask = () => {
+	function toggleNewTask() {
 		newTaskShow = !newTaskShow;
 	};
 </script>

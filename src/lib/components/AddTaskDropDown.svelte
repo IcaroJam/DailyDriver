@@ -2,7 +2,42 @@
 	import { slide } from "svelte/transition";
 	import { defaults, tasksList } from "../../stores.js";
 
-	let taskStart = "", taskEnd = "";
+	let taskStart = "", taskEnd = "", taskText = "";
+
+	function saveTask() {
+		const newtask = {
+			description: taskText,
+
+			rawStart: taskStart,
+			startHour: parseInt(taskStart.slice(0, 2)),
+			startMin: parseInt(taskStart.slice(3)),
+			startTime: 0,
+
+			rawEnd: taskEnd,
+			endHour: parseInt(taskEnd.slice(0, 2)),
+			endMin: parseInt(taskEnd.slice(3)),
+			endTime: 0,
+
+			timeSpan: 0,
+		}
+
+		newtask.startTime = newtask.startHour + newtask.startMin / 60;
+		newtask.endTime = newtask.endHour + newtask.endMin / 60;
+
+		newtask.timeSpan = newtask.startTime > newtask.endTime ?
+			24 - newtask.startTime + newtask.endTime :
+			newtask.endTime - newtask.startTime;
+
+		console.log(newtask);
+
+		$tasksList = [...$tasksList, newtask];
+		//$tasksList.sort(function(a, b) {
+		//	if (a.startHour != b.startHour)
+		//		return a.startHour - b.startHour;
+		//	else
+		//		return a.startMin - b.startMin;
+		//});
+	}
 </script>
 
 
@@ -15,8 +50,8 @@
 		<input bind:value={taskEnd} id="input-end" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
 	</div>
 	<label for="task-description">Description:</label>
-	<textarea id="task-description" placeholder="Notem ipsum"/>
-	<input type="submit" value="Save" id="save" onclick="newTaskSave()">
+	<textarea bind:value={taskText} id="task-description" placeholder="Notem ipsum"/>
+	<input type="submit" value="Save" id="save" on:click={saveTask}>
 </form>
 
 
