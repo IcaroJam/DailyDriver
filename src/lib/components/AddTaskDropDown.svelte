@@ -19,6 +19,7 @@
 			endTime: 0,
 
 			timeSpan: 0,
+			timeFromStart: 0,
 		}
 
 		newtask.startTime = newtask.startHour + newtask.startMin / 60;
@@ -27,6 +28,9 @@
 		newtask.timeSpan = newtask.startTime > newtask.endTime ?
 			24 - newtask.startTime + newtask.endTime :
 			newtask.endTime - newtask.startTime;
+		newtask.timeFromStart = $defaults.startTime > newtask.startTime ?
+			24 - $defaults.startTime + newtask.startTime :
+			newtask.startTime - $defaults.startTime;
 
 		console.log(newtask);
 

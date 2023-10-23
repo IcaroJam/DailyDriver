@@ -5,7 +5,7 @@
 
 {#if props !== undefined}
 	<!-- There must be a better, less fucking ugly way of doing this... -->
-	<div class="task" style={`height: ${110 * props.timeSpan}px; top: calc(var(--navHeight) + ${110 * props.timeSpan}px)`}>
+	<div class="task" style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart}px`}>
 		{props.description}
 	</div>
 {/if}
