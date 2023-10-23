@@ -1,4 +1,5 @@
 <script>
+	import { slide } from "svelte/transition";
 	import { defaults, tasksList } from "../../stores.js";
 
 	let taskStart = "", taskEnd = "";
@@ -6,7 +7,7 @@
 
 
 
-<form id="addTaskDD" on:submit|preventDefault={() => ""}>
+<form id="addTaskDD" on:submit|preventDefault={() => ""} transition:slide={{axis: "y", duration: 500}}>
 	<div>
 		<label for="input-start">From: </label>
 		<input bind:value={taskStart} id="input-start" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
