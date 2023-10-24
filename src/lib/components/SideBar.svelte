@@ -4,7 +4,7 @@
 
 
 
-<div id="sideBar" style='height: {$defaults.timeSpan.length * 110 + 10 + "px"};'>
+<div id="sideBar">
 	{#each $defaults.timeSpan as hour}
 		<div class="sideElement">
 			{hour}
@@ -19,6 +19,7 @@
 		width: 120px;
 
 		padding-right: 10px;
+		padding-bottom: 10px;
 
 		border-radius: 0 0 30px 0;
 		background-color: var(--sideBarBackColour);
