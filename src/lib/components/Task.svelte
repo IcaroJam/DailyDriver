@@ -15,7 +15,7 @@
 
 {#if props !== undefined && slideIn}
 	<!-- There must be a better, less fucking ugly way of doing this... -->
-	<div class="task" style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart}px`} transition:slide={{axis: "x", duration: 500}}>
+	<div class="task" style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart + 5}px`} transition:slide={{axis: "x", duration: 500}}>
 		{props.description}
 	</div>
 {/if}
