@@ -4,6 +4,27 @@
 
 	let taskStart = "", taskEnd = "", taskText = "";
 
+	// Make it so the minimum taskend is 15 minutes after the taskstart:
+	function fifteenMinAfter(time) {
+		if (!time)
+			return ($defaults.dayStart);
+
+		const hour = parseInt(time.slice(0, 2));
+		const min = parseInt(time.slice(3));
+
+		let rethour = hour;
+		let retmin = min + 15;
+
+		if (retmin >= 60) {
+			retmin %= 60;
+			rethour++;
+		}
+		if (rethour >= 24)
+			rethour %= 24;
+
+		return (rethour + ":" + (retmin < 10 ? "0" + retmin : retmin));
+	}
+
 	function saveTask() {
 		const newtask = {
 			description: taskText,
@@ -48,17 +69,17 @@
 
 
 
-<form id="addTaskDD" on:submit|preventDefault={() => ""} transition:slide={{axis: "y", duration: 500}}>
+<form id="addTaskDD" on:submit|preventDefault={saveTask} transition:slide={{axis: "y", duration: 500}}>
 	<div>
 		<!-- These two should not be required in the future (when todos are implemented) -->
 		<label for="input-start">From: </label>
-		<input required bind:value={taskStart} id="input-start" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
+		<input required bind:value={taskStart} id="input-start" type="time" step="60" min={$defaults.dayStart} max={$defaults.dayEnd}/>
 		<label for="input-end">to:</label>
-		<input required bind:value={taskEnd} id="input-end" type="time" step="60" min={taskStart} max={$defaults.endTime}/>
+		<input required bind:value={taskEnd} id="input-end" type="time" step="60" min={fifteenMinAfter(taskStart)} max={$defaults.dayEnd}/>
 	</div>
 	<label for="task-description">Description:</label>
 	<textarea required bind:value={taskText} id="task-description" placeholder="Notem ipsum"/>
-	<input type="submit" value="Save" id="save" on:submit={saveTask}>
+	<input type="submit" value="Save" id="save">
 </form>
 
 
