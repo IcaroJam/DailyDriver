@@ -35,12 +35,14 @@
 		console.log(newtask);
 
 		$tasksList = [...$tasksList, newtask];
-		//$tasksList.sort(function(a, b) {
-		//	if (a.startHour != b.startHour)
-		//		return a.startHour - b.startHour;
-		//	else
-		//		return a.startMin - b.startMin;
-		//});
+		$tasksList.sort(function(a, b) {
+			if (a.startHour != b.startHour)
+				return a.startHour - b.startHour;
+			else
+				return a.startMin - b.startMin;
+		});
+
+		localStorage.setItem("dailydriver_tasks", JSON.stringify($tasksList));
 	}
 </script>
 
@@ -48,13 +50,14 @@
 
 <form id="addTaskDD" on:submit|preventDefault={() => ""} transition:slide={{axis: "y", duration: 500}}>
 	<div>
+		<!-- These two should not be required in the future (when todos are implemented) -->
 		<label for="input-start">From: </label>
-		<input bind:value={taskStart} id="input-start" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
+		<input required bind:value={taskStart} id="input-start" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
 		<label for="input-end">to:</label>
-		<input bind:value={taskEnd} id="input-end" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
+		<input required bind:value={taskEnd} id="input-end" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
 	</div>
 	<label for="task-description">Description:</label>
-	<textarea bind:value={taskText} id="task-description" placeholder="Notem ipsum"/>
+	<textarea required bind:value={taskText} id="task-description" placeholder="Notem ipsum"/>
 	<input type="submit" value="Save" id="save" on:click={saveTask}>
 </form>
 
