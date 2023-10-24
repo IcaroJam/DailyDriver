@@ -1,12 +1,21 @@
 <script>
+	import { onMount } from "svelte";
+	import { slide } from "svelte/transition";
+
 	export let props;
+
+	let slideIn = false;
+
+	onMount(() => {
+		slideIn = true;
+	});
 </script>
 
 
 
-{#if props !== undefined}
+{#if props !== undefined && slideIn}
 	<!-- There must be a better, less fucking ugly way of doing this... -->
-	<div class="task" style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart}px`}>
+	<div class="task" style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart}px`} transition:slide={{axis: "x", duration: 500}}>
 		{props.description}
 	</div>
 {/if}
