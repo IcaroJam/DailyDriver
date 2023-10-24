@@ -54,11 +54,11 @@
 		<label for="input-start">From: </label>
 		<input required bind:value={taskStart} id="input-start" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
 		<label for="input-end">to:</label>
-		<input required bind:value={taskEnd} id="input-end" type="time" step="60" min={$defaults.startTime} max={$defaults.endTime}/>
+		<input required bind:value={taskEnd} id="input-end" type="time" step="60" min={taskStart} max={$defaults.endTime}/>
 	</div>
 	<label for="task-description">Description:</label>
 	<textarea required bind:value={taskText} id="task-description" placeholder="Notem ipsum"/>
-	<input type="submit" value="Save" id="save" on:click={saveTask}>
+	<input type="submit" value="Save" id="save" on:submit={saveTask}>
 </form>
 
 
