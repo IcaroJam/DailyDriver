@@ -30,7 +30,7 @@
 	</div>
 </nav>
 {#if newTaskShow}
-	<AddTaskDropDown />
+	<AddTaskDropDown bind:newTaskShow />
 {/if}
 
 

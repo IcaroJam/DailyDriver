@@ -2,6 +2,8 @@
 	import { slide } from "svelte/transition";
 	import { defaults, tasksList } from "../../stores.js";
 
+	export let newTaskShow;
+
 	let taskStart = "", taskEnd = "", taskText = "";
 
 	// Make it so the minimum taskend is 15 minutes after the taskstart:
@@ -53,7 +55,7 @@
 			24 - $defaults.startTime + newtask.startTime :
 			newtask.startTime - $defaults.startTime;
 
-		console.log(newtask);
+		//console.log(newtask);
 
 		$tasksList = [...$tasksList, newtask];
 		$tasksList.sort(function(a, b) {
@@ -64,6 +66,9 @@
 		});
 
 		localStorage.setItem("dailydriver_tasks", JSON.stringify($tasksList));
+
+		// Close the new task dropdown:
+		newTaskShow = false;
 	}
 </script>
 
