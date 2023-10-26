@@ -12,7 +12,7 @@
 	{/each}
 
 	<!-- The tasks themselves: -->
-	{#each $tasksList as taskinfo}
+	{#each $tasksList as taskinfo (taskinfo)}
 		<Task props={taskinfo} />
 	{/each}
 </div>
