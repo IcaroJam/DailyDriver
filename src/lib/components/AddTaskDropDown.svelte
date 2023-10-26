@@ -55,7 +55,7 @@
 			24 - $defaults.startTime + newtask.startTime :
 			newtask.startTime - $defaults.startTime;
 
-		//console.log(newtask);
+		console.log(newtask);
 
 		$tasksList = [...$tasksList, newtask];
 		$tasksList.sort(function(a, b) {

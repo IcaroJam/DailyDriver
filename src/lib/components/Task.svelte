@@ -3,11 +3,13 @@
 	import { slide } from "svelte/transition";
 
 	export let props;
+	export let i;
 
 	let slideIn = false;
 
 	onMount(() => {
 		slideIn = true;
+		//console.log("Task ", i, ": ", props);
 	});
 </script>
 
@@ -15,7 +17,7 @@
 
 {#if props !== undefined && slideIn}
 	<!-- There must be a better, less fucking ugly way of doing this... -->
-	<div class="task" style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart + 5}px`} transition:slide={{axis: "x", duration: 500}}>
+	<div class="task" class:task-alt-bc={i % 2} style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart + 5}px`} transition:slide={{axis: "x", duration: 500}}>
 		{props.description}
 	</div>
 {/if}
@@ -38,5 +40,11 @@
 	
 		color: var(--titleBarColour);
 		background-color: var(--sideBarElementColour);
+
+		transition: background-color .4s ease;
+	}
+
+	.task-alt-bc {
+		background-color: var(--sideBarBackColour);
 	}
 </style>

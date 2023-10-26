@@ -1,6 +1,8 @@
 <script>
-    import {defaults, tasksList} from "../../stores";
+	import {defaults, tasksList} from "../../stores";
 	import Task from "$lib/components/Task.svelte";
+
+	//$: console.log($tasksList);
 </script>
 
 
@@ -12,8 +14,8 @@
 	{/each}
 
 	<!-- The tasks themselves: -->
-	{#each $tasksList as taskinfo (taskinfo)}
-		<Task props={taskinfo} />
+	{#each $tasksList as taskinfo, i (taskinfo)}
+		<Task {i} props={taskinfo} />
 	{/each}
 </div>
 
