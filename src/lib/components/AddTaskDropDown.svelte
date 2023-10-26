@@ -29,6 +29,8 @@
 
 	function saveTask() {
 		const newtask = {
+			completed: false,
+
 			description: taskText,
 
 			rawStart: taskStart,

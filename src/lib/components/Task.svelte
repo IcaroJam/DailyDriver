@@ -13,13 +13,20 @@
 		slideIn = true;
 		//console.log("Task ", i, ": ", props);
 	});
+
+	function completeTask() {
+		props.completed = !props.completed;
+	}
 </script>
 
 
 
 {#if props !== undefined && slideIn}
 	<!-- There must be a better, less fucking ugly way of doing this... -->
-	<div class="task" class:task-alt-bc={i % 2} style={`height: ${taskHeight}px; top: ${taskTop}px`} transition:slide={{axis: "x", duration: 500}}>
+	<div class="task" class:task-alt-bc={i % 2} class:completed={props.completed}
+	style={`height: ${taskHeight}px; top: ${taskTop}px`}
+	transition:slide={{axis: "x", duration: 500}}
+	role="button" tabindex="0" on:click={completeTask} on:keypress={completeTask}>
 		<span>{props.description}</span>
 	</div>
 {/if}
@@ -42,7 +49,13 @@
 		color: var(--titleBarColour);
 		background-color: var(--sideBarElementColour);
 
-		transition: background-color .4s ease;
+		cursor: pointer;
+
+		transition: all .2s ease-out;
+	}
+
+	.task:hover {
+		width: 87.5%;
 	}
 
 	.task > span {
@@ -53,5 +66,18 @@
 
 	.task-alt-bc {
 		background-color: var(--sideBarBackColour);
+	}
+
+	.completed {
+		width: 80%;
+
+		opacity: 0.6;
+
+		text-decoration: line-through;
+		text-decoration-thickness: 2px;
+	}
+
+	.completed:hover {
+		width: 79%;
 	}
 </style>
