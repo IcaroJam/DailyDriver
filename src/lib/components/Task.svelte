@@ -51,11 +51,13 @@
 
 		cursor: pointer;
 
-		transition: all .2s ease-out;
+		transition: all .5s ease;
 	}
 
 	.task:hover {
 		width: 87.5%;
+
+		transition: width .1s ease-out;
 	}
 
 	.task > span {
@@ -75,9 +77,13 @@
 
 		text-decoration: line-through;
 		text-decoration-thickness: 2px;
+
+		transition: all .5s ease;
 	}
 
 	.completed:hover {
 		width: 79%;
+
+		transition: all .5s ease;
 	}
 </style>
