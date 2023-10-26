@@ -6,6 +6,8 @@
 	export let i;
 
 	let slideIn = false;
+	let taskHeight = 110 * props.timeSpan;
+	let taskTop = 110 * props.timeFromStart + 5;
 
 	onMount(() => {
 		slideIn = true;
@@ -17,8 +19,8 @@
 
 {#if props !== undefined && slideIn}
 	<!-- There must be a better, less fucking ugly way of doing this... -->
-	<div class="task" class:task-alt-bc={i % 2} style={`height: ${110 * props.timeSpan}px; top: ${110 * props.timeFromStart + 5}px`} transition:slide={{axis: "x", duration: 500}}>
-		{props.description}
+	<div class="task" class:task-alt-bc={i % 2} style={`height: ${taskHeight}px; top: ${taskTop}px`} transition:slide={{axis: "x", duration: 500}}>
+		<span>{props.description}</span>
 	</div>
 {/if}
 
@@ -30,8 +32,7 @@
 		padding: 5px 15px;
 	
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		align-items: center;
 	
 		position: absolute;
 		right: 0;
@@ -42,6 +43,12 @@
 		background-color: var(--sideBarElementColour);
 
 		transition: background-color .4s ease;
+	}
+
+	.task > span {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.task-alt-bc {
