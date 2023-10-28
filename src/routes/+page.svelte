@@ -17,7 +17,7 @@
 	</div>
 	<footer>
 		<small>
-			DailyDriver indev-0.0.0.3
+			DailyDriver indev-0.0.0.4
 		</small>
 	</footer>
 </div>
