@@ -76,7 +76,7 @@
 
 {#if editing}
 	<div class="task-edit-window">
-		<AddTaskDropDown bind:newTaskShow={editing} editTask={true} taskToEdit={props} >
+		<AddTaskDropDown bind:newTaskShow={editing} editTask={true} bind:taskToEdit={props} >
 			<input class="cancel-btn" type="reset" on:click={editTask}>
 		</AddTaskDropDown>
 	</div>

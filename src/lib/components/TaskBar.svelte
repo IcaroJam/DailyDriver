@@ -15,7 +15,7 @@
 
 	<!-- The tasks themselves: -->
 	{#each $tasksList as taskinfo, i (taskinfo)}
-		<Task {i} props={taskinfo} />
+		<Task {i} bind:props={taskinfo} />
 	{/each}
 </div>
 

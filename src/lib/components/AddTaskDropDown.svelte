@@ -71,8 +71,9 @@
 		
 		// If the task is being edited, replace the old version with the new one:
 		if (editTask)
-			$tasksList.splice($tasksList.findIndex((tsk) => tsk.description == taskToEdit.description));
-		$tasksList = [...$tasksList, newtask];
+			taskToEdit = newtask;
+		else
+			$tasksList = [...$tasksList, newtask];
 
 		$tasksList.sort(function(a, b) {
 			if (a.startHour != b.startHour)
