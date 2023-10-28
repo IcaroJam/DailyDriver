@@ -124,7 +124,7 @@
 		z-index: 1;
 
 		width: 100%;
-		min-height: min-content;
+		min-height: fit-content;
 
 		padding: 20px;
 	

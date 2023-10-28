@@ -163,6 +163,7 @@
 
 		width: 100%;
 		height: 100%;
+		min-height: 300px;
 
 		display: flex;
 		justify-content: center;
@@ -173,6 +174,8 @@
 		left: 0;
 
 		backdrop-filter: blur(2px);
+
+		overflow-y: auto;
 	}
 
 	.cancel-btn {
