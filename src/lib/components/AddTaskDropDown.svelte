@@ -3,8 +3,12 @@
 	import { defaults, tasksList } from "../../stores.js";
 
 	export let newTaskShow;
+	export let editTask = false;
+	export let taskToEdit = {};
 
-	let taskStart = "", taskEnd = "", taskText = "";
+	let taskStart = taskToEdit.rawStart || "";
+	let taskEnd = taskToEdit.rawEnd || "";
+	let taskText = taskToEdit.description || "";
 
 	// Make it so the minimum taskend is 15 minutes after the taskstart:
 	function fifteenMinAfter(time) {
@@ -27,6 +31,16 @@
 		return (rethour + ":" + (retmin < 10 ? "0" + retmin : retmin));
 	}
 
+	function getTime(hours, minutes) {
+		return hours + minutes / 60;
+	}
+
+	function getSpan(startTime, endTime) {
+		return startTime > endTime ?
+			24 - startTime + endTime :
+			endTime - startTime;
+	}
+
 	function saveTask() {
 		const newtask = {
 			completed: false,
@@ -47,19 +61,19 @@
 			timeFromStart: 0,
 		}
 
-		newtask.startTime = newtask.startHour + newtask.startMin / 60;
-		newtask.endTime = newtask.endHour + newtask.endMin / 60;
+		newtask.startTime = getTime(newtask.startHour, newtask.startMin);
+		newtask.endTime = getTime(newtask.endHour, newtask.endMin);
 
-		newtask.timeSpan = newtask.startTime > newtask.endTime ?
-			24 - newtask.startTime + newtask.endTime :
-			newtask.endTime - newtask.startTime;
-		newtask.timeFromStart = $defaults.startTime > newtask.startTime ?
-			24 - $defaults.startTime + newtask.startTime :
-			newtask.startTime - $defaults.startTime;
+		newtask.timeSpan = getSpan(newtask.startTime, newtask.endTime);
+		newtask.timeFromStart = getSpan($defaults.startTime, newtask.startTime);
 
-		console.log(newtask);
-
+		//console.log(newtask);
+		
+		// If the task is being edited, replace the old version with the new one:
+		if (editTask)
+			$tasksList.splice($tasksList.findIndex((tsk) => tsk.description == taskToEdit.description));
 		$tasksList = [...$tasksList, newtask];
+
 		$tasksList.sort(function(a, b) {
 			if (a.startHour != b.startHour)
 				return a.startHour - b.startHour;
@@ -76,7 +90,7 @@
 
 
 
-<form id="addTaskDD" on:submit|preventDefault={saveTask} transition:slide={{axis: "y", duration: 500}}>
+<form id={editTask ? "task-edit-window" : "addTaskDD"} on:submit|preventDefault={saveTask} transition:slide={{axis: "y", duration: 500}}>
 	<div>
 		<!-- These two should not be required in the future (when todos are implemented) -->
 		<label for="input-start">From: </label>
@@ -86,13 +100,26 @@
 	</div>
 	<label for="task-description">Description:</label>
 	<textarea required bind:value={taskText} id="task-description" placeholder="Notem ipsum"/>
-	<input type="submit" value="Save" id="save">
+	<div>
+		<slot></slot>
+		<input type="submit" value="Save" id="save">
+	</div>
 </form>
 
 
 
 <style>
-	#addTaskDD {
+	#task-edit-window {
+		width: 85%;
+		height: 80%;
+
+		border: dashed 3px var(--titleBarColour);
+		border-radius: 30px;
+
+		background-color: var(--mainContainerColour);
+	}
+
+	form {
 		z-index: 1;
 
 		width: 100%;
@@ -104,7 +131,7 @@
 
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		gap: 5px;
 	
@@ -118,19 +145,20 @@
 		color: var(--titleBarColour);
 	}
 
-	#addTaskDD > div {
+	form > div {
 		width: 100%;
 
 		display: flex;
+		justify-content: center;
 		align-items: center;
 		gap: 5px;
 	}
 
-	#addTaskDD > label {
+	form > label {
 		width: 100%;
 	}
 
-	#addTaskDD input, #addTaskDD textarea {
+	form :global(input), form textarea {
 		width: 50%;
 		height: 50px;
 
@@ -150,11 +178,13 @@
 		opacity: 1; /* Firefox */
 	}
 	
-	#addTaskDD textarea {
+	form textarea {
 		width: 100%;
 		height: 100px;
 
-		border-bottom-right-radius: 0;
+		flex-grow: 1;
+
+		resize: none;
 	}
 	
 	#save {
