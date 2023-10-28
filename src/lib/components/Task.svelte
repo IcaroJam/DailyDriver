@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import { slide } from "svelte/transition";
     import AddTaskDropDown from "./AddTaskDropDown.svelte";
+	import { tasksList } from "../../stores";
 
 	export let props;
 	export let i;
@@ -21,6 +22,7 @@
 	function completeTask() {
 		props.completed = !props.completed;
 		selected = false;
+		localStorage.setItem("dailydriver_tasks", JSON.stringify($tasksList));
 	}
 
 	function toggleSelected() {
