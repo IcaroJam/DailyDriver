@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	import { slide } from "svelte/transition";
+	import { slide, fly } from "svelte/transition";
     import AddTaskDropDown from "./AddTaskDropDown.svelte";
 	import { tasksList } from "../../stores";
 
@@ -81,6 +81,7 @@
 		<AddTaskDropDown bind:newTaskShow={editing} editTask={true} bind:taskToEdit={props} >
 			<input class="cancel-btn" type="reset" value="Cancel" on:click={editTask}>
 		</AddTaskDropDown>
+		<button class="delete-btn" transition:fly={{y: 100, duration: 500}}>!! Delete task !!</button>
 	</div>
 {/if}
 
@@ -115,6 +116,8 @@
 	.task > svg {
 		width: 30px;
 		height: 110%;
+
+		flex-shrink: 0;
 
 		border: dotted 3px var(--titleBarColour, lightsteelblue);
 		border-top: none;
@@ -179,6 +182,23 @@
 	}
 
 	.cancel-btn {
+		color: var(--mainContainerColour);
+		background-color: var(--titleBarColour);
+	}
+
+	.delete-btn {
+		width: 50%;
+
+		padding: 10px;
+
+		position: absolute;
+		bottom: 4%;
+
+		border: solid 3px var(--mainContainerColour);
+		border-radius: 15px;
+
+		text-align: center;
+		font-weight: bolder;
 		color: var(--mainContainerColour);
 		background-color: var(--titleBarColour);
 	}
