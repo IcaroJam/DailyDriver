@@ -133,7 +133,7 @@
 	.task > span {
 		flex-grow: 1;
 
-		margin: 5px 10px;
+		margin: 10px 15px;
 
 		white-space: nowrap;
 		overflow: hidden;
@@ -201,5 +201,7 @@
 		font-weight: bolder;
 		color: var(--mainContainerColour);
 		background-color: var(--titleBarColour);
+
+		cursor: pointer;
 	}
 </style>
