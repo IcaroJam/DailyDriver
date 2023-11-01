@@ -13,6 +13,7 @@
 
 	let selected = false;
 	let editing = false;
+	let delconf = false;
 
 	onMount(() => {
 		slideIn = true;
@@ -33,6 +34,14 @@
 	function editTask() {
 		editing = !editing;
 		selected = false;
+	}
+
+	function deleteTask() {
+		const tempList = $tasksList;
+		tempList.splice(i, 1);
+		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
+		editing = false;
+		$tasksList = tempList;
 	}
 </script>
 
@@ -81,7 +90,15 @@
 		<AddTaskDropDown bind:newTaskShow={editing} editTask={true} bind:taskToEdit={props} >
 			<input class="cancel-btn" type="reset" value="Cancel" on:click={editTask}>
 		</AddTaskDropDown>
-		<button class="delete-btn" transition:fly={{y: 100, duration: 500}}>!! Delete task !!</button>
+		<div class="delete-container" transition:fly={{y: 100, duration: 500}}>
+			{#if delconf}
+				<button class="fuck-go-back" on:click={() => {delconf = false;}}>No</button>
+				Sure?
+				<button class="delete-btn" style="width: unset;" on:click={deleteTask}>Yes</button>
+			{:else}
+				<button class="delete-btn" on:click={() => {delconf = true;}}>!! Delete task !!</button>
+			{/if}
+		</div>
 	</div>
 {/if}
 
@@ -186,22 +203,45 @@
 		background-color: var(--titleBarColour);
 	}
 
-	.delete-btn {
+	.delete-container {
 		width: 50%;
-
-		padding: 10px;
 
 		position: absolute;
 		bottom: 4%;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 5px;
+
+		border-radius: 15px;
+		background-color: var(--mainContainerColour);
+		color: var(--titleBarColour);
+		font-weight: bold;
+	}
+
+	.delete-container > button {
+		padding: 10px;
 
 		border: solid 3px var(--mainContainerColour);
 		border-radius: 15px;
 
 		text-align: center;
 		font-weight: bolder;
-		color: var(--mainContainerColour);
-		background-color: var(--titleBarColour);
 
 		cursor: pointer;
+	}
+
+	.delete-container .fuck-go-back {
+		color: var(--titleBarColour);
+		background-color: var(--mainContainerColour);
+		border: solid 3px var(--titleBarColour);
+	}
+
+	.delete-btn {
+		width: 100%;
+
+		color: var(--mainContainerColour);
+		background-color: var(--titleBarColour);
 	}
 </style>
