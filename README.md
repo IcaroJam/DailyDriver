@@ -1,38 +1,34 @@
-# create-svelte
+# DailyDriver
+### A small dayplanning webapp
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This projects aims to serve as a way to both learn svelte and webdev and also help me plan out my days a bit better.
+The website is in early alpha, so expect bugs and a lack of common useful features. In spite of this, the minimum for it to be usable is already in place, so try it out!
 
-## Creating a project
+I don't pretend to make a fully-fledged, multiplatform and portable app, but a tiny companion to help you manually keeping track of your stuff without getting too much in the way. 
+It should also be customizable enough to adapt to your normal work schedule and theme preferences.
 
-If you're seeing this, you've probably already done this step. Congrats!
+I also plan on allowing time independent tasks that act as simple ToDos, but none of that for now.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Current Features
+As of now, DailyDriver offers the following:
+- Creation of tasks in a defined interval [8:00 - 22:00].
+    - These tasks each hold a start and end hour and a description.
+    - All their fields can be edited once created.
+    - Tasks can be marked as completed.
+    - Tasks can also be deleted.
+    - Tasks are displayed as boxes laid out from their start to end hours.
+- A green and brown palette that's cozy and soft on the eyes (at least to me, contrast is a bit too low for some people though).
+- Animations and transitions for most stuff that makes it feel more alive and less stiff.
+- Working mostly fine in both desktop and mobile.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Planned features
+- Settings and customization.
+    - Being able to set different day start and end hours.
+    - Having a set of default themes to choose from.
+    - Being able to create custom themes, import and export them.
+- Taskier tasks.
+    - Currently tasks MUST have start and end times. Allowing for ToDos that aren't limited that way would be nice.
+    - A way of viewing and marking tasks and todos as completed in a list-like fashion.
+    - A way of batch-completing and batch-deleting tasks.
+    - Better task overlapping. There's no defined behaviour for tasks to follow when they overlap, that's no good.
+- A toggable time marker that moves in real time. Some kind of in-site indicator of the current time.
