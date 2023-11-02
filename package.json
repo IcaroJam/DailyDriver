@@ -1,6 +1,6 @@
 {
 	"name": "dailydriver",
-	"version": "alpha-0.0.1",
+	"version": "alpha-0.0.1.1",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
