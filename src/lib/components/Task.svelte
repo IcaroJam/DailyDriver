@@ -54,6 +54,7 @@
 	transition:slide={{axis: "x", duration: 500}}
 	role="button" tabindex="0"
 	on:touchstart={toggleSelected}
+	on:touchmove={() => {selected = false;}}
 	on:mouseover={() => {selected = true;}}
 	on:focus={() => {selected = true;}}
 	on:mouseleave={() => {selected = false;}}>
