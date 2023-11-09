@@ -95,7 +95,7 @@
 {/if}
 
 {#if editing}
-	<div class="task-edit-window">
+	<div class="blurred-window">
 		<AddTaskDropDown bind:newTaskShow={editing} editTask={true} bind:taskToEdit={props} >
 			<input class="cancel-btn" type="reset" value="Cancel" on:click={editTask}>
 		</AddTaskDropDown>
@@ -185,26 +185,6 @@
 		width: 79%;
 
 		transition: all .5s ease;
-	}
-
-	.task-edit-window {
-		z-index: 1;
-
-		width: 100%;
-		height: 100%;
-		min-height: 300px;
-
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		position: fixed;
-		top: 0;
-		left: 0;
-
-		backdrop-filter: blur(2px);
-
-		overflow-y: auto;
 	}
 
 	.cancel-btn {

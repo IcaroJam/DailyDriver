@@ -4,13 +4,17 @@
 
 	import { defaults } from "../stores";
 
-	// Add useful stuff to the config:
-	$defaults.timeSpan = [];
-	for (let i = $defaults.startTime; i !== $defaults.endTime; ) {
-		$defaults.timeSpan.push(i);
+	// Create a list of workable hours and update it everytime the start and end times are changed in the config:
+	$: getDaySpan($defaults.startTime, $defaults.endTime);
 
-		i++;
-		i %= 24;
+	function getDaySpan(start, end) {
+		$defaults.timeSpan = [];
+		for (let i = start; i !== end; ) {
+			$defaults.timeSpan.push(i);
+
+			i++;
+			i %= 24;
+		}
 	}
 </script>
 
