@@ -2,18 +2,23 @@
 	import { onMount } from "svelte";
 	import { slide, fly } from "svelte/transition";
     import AddTaskDropDown from "./AddTaskDropDown.svelte";
-	import { tasksList } from "../../stores";
+	import { getSpan } from "./AddTaskDropDown.svelte";
+	import { defaults, tasksList } from "../../stores";
 
 	export let props;
 	export let i;
 
 	let slideIn = false;
-	let taskHeight = 110 * props.timeSpan;
-	let taskTop = 110 * props.timeFromStart + 5;
+	let taskHeight;
+	let taskTop;
 
 	let selected = false;
 	let editing = false;
 	let delconf = false;
+
+	$: props.timeFromStart = getSpan($defaults.startTime, props.startTime);
+	$: taskHeight = 110 * props.timeSpan;
+	$: taskTop = 110 * props.timeFromStart + 5;
 
 	onMount(() => {
 		slideIn = true;

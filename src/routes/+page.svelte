@@ -5,7 +5,13 @@
 	import { defaults } from "../stores";
 
 	// Add useful stuff to the config:
-	$defaults.timeSpan = [...Array($defaults.endTime).keys()].filter((num) => num >= $defaults.startTime);
+	$defaults.timeSpan = [];
+	for (let i = $defaults.startTime; i !== $defaults.endTime; ) {
+		$defaults.timeSpan.push(i);
+
+		i++;
+		i %= 24;
+	}
 </script>
 
 

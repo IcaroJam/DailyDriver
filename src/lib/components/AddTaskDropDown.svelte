@@ -1,3 +1,11 @@
+<script context="module">
+	export function getSpan(startTime, endTime) {
+		return startTime > endTime ?
+			24 - startTime + endTime :
+			endTime - startTime;
+	}
+</script>
+
 <script>
 	import { slide } from "svelte/transition";
 	import { defaults, tasksList } from "../../stores.js";
@@ -33,12 +41,6 @@
 
 	function getTime(hours, minutes) {
 		return hours + minutes / 60;
-	}
-
-	function getSpan(startTime, endTime) {
-		return startTime > endTime ?
-			24 - startTime + endTime :
-			endTime - startTime;
 	}
 
 	function saveTask() {
