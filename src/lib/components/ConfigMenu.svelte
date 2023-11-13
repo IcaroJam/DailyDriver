@@ -1,10 +1,30 @@
 <script>
-	import { defaults } from "../../stores.js";
+	import { defaults, tasksList } from "../../stores.js";
 
 	export let configShow = false;
 
 	let dayStart = $defaults.dayStart;
 	let dayEnd = $defaults.dayEnd;
+
+	function oneMoreHour(givenTime) {
+		const temp = parseInt(givenTime.slice(0, 2) + 1);
+
+		return temp >= 24 ? temp % 24 + ":00" : temp + ":00";
+	}
+
+	function checkOOR(task, nc) {
+		return task.timeSpan > nc.daySpan
+				|| (task.startTime < nc.startTime && task.startTime > nc.endTime)
+				|| (task.endTime > nc.endTime && task.endTime < nc.startTime);
+	}
+
+	function settingsCheck(newConfig) {
+		// Check if any tasks would fall out of the new time span:
+		const outOfRangeTasks = $tasksList.filter((task) => checkOOR(task, newConfig));
+		console.log("These fall out:", outOfRangeTasks);
+	
+		return true;
+	}
 
 	function saveSettings() {
 		const newConfig = {
@@ -12,12 +32,16 @@
 			endTime: parseInt(dayEnd.slice(0, 2)),
 			dayStart: dayStart,
 			dayEnd: dayEnd,
+			daySpan: 0,
 		}
+		newConfig.daySpan = newConfig.startTime > newConfig.endTime ? 24 + newConfig.dayEnd - newConfig.dayStart : newConfig.dayEnd - newConfig.dayStart;
 	
-		$defaults = newConfig;
+		if (settingsCheck(newConfig)) {
+			$defaults = newConfig;
 
-		console.log($defaults);
-		configShow = false;
+			//console.log($defaults);
+			configShow = false;
+		}
 	}
 </script>
 
@@ -36,7 +60,7 @@
 		</div>
 		<div class="config-horizontal">
 			<label for="endTimeInput">Day end:</label>
-			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600">
+			<input required bind:value={dayEnd} id="endTimeInput" type="time" min={oneMoreHour(dayStart)} step="3600">
 		</div>
 		<input type="submit" value="Save" id="save">
 	</form>

@@ -8,8 +8,8 @@
 	$: getDaySpan($defaults.startTime, $defaults.endTime);
 
 	function getDaySpan(start, end) {
-		$defaults.timeSpan = [];
-		for (let i = start; i !== end; ) {
+		$defaults.timeSpan = [start];
+		for (let i = start + 1; i !== end; ) {
 			$defaults.timeSpan.push(i);
 
 			i++;
