@@ -9,7 +9,7 @@
 	let warningMsg = "";
 
 	function oneMoreHour(givenTime) {
-		const temp = parseInt(givenTime.slice(0, 2) + 1);
+		const temp = parseInt(givenTime.slice(0, 2)) + 1;
 
 		return temp >= 24 ? temp % 24 + ":00" : temp + ":00";
 	}
@@ -18,8 +18,8 @@
 		// This function is really quite bad atm isn't it?
 		if (nc.startTime > nc.endTime)
 			return task.timeSpan > nc.daySpan
-				|| (task.startTime < nc.startTime && task.startTime > nc.endTime)
-				|| (task.endTime > nc.endTime && task.endTime < nc.startTime);
+				|| (task.startTime <= nc.startTime && task.startTime >= nc.endTime)
+				|| (task.endTime >= nc.endTime && task.endTime <= nc.startTime);
 		else if (nc. endTime > nc.startTime)
 			return task.timeSpan > nc.daySpan
 				|| task.startTime < nc.startTime
@@ -78,7 +78,7 @@
 		</div>
 		<div class="config-horizontal">
 			<label for="endTimeInput">Day end:</label>
-			<input required bind:value={dayEnd} id="endTimeInput" type="time" min={oneMoreHour(dayStart)} step="3600">
+			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600">
 		</div>
 		<span>{warningMsg}</span>
 		<input type="submit" value="Save" id="save">
