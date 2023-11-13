@@ -34,12 +34,12 @@
 			dayEnd: dayEnd,
 			daySpan: 0,
 		}
-		newConfig.daySpan = newConfig.startTime > newConfig.endTime ? 24 + newConfig.dayEnd - newConfig.dayStart : newConfig.dayEnd - newConfig.dayStart;
+		newConfig.daySpan = newConfig.startTime >= newConfig.endTime ? 24 + newConfig.endTime - newConfig.startTime : newConfig.endTime - newConfig.startTime;
 	
 		if (settingsCheck(newConfig)) {
 			$defaults = newConfig;
 
-			//console.log($defaults);
+			console.log($defaults);
 			configShow = false;
 		}
 	}
