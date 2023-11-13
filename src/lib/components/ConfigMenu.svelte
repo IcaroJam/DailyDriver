@@ -6,6 +6,8 @@
 	let dayStart = $defaults.dayStart;
 	let dayEnd = $defaults.dayEnd;
 
+	let warningMsg = "";
+
 	function oneMoreHour(givenTime) {
 		const temp = parseInt(givenTime.slice(0, 2) + 1);
 
@@ -13,17 +15,31 @@
 	}
 
 	function checkOOR(task, nc) {
-		return task.timeSpan > nc.daySpan
+		// This function is really quite bad atm isn't it?
+		if (nc.startTime > nc.endTime)
+			return task.timeSpan > nc.daySpan
 				|| (task.startTime < nc.startTime && task.startTime > nc.endTime)
 				|| (task.endTime > nc.endTime && task.endTime < nc.startTime);
+		else if (nc. endTime > nc.startTime)
+			return task.timeSpan > nc.daySpan
+				|| task.startTime < nc.startTime
+				|| task.endTime > nc.endTime
+				|| task.startTime > task.endTime;
+		else
+			return false;
 	}
 
 	function settingsCheck(newConfig) {
+		warningMsg = "";
+
 		// Check if any tasks would fall out of the new time span:
 		const outOfRangeTasks = $tasksList.filter((task) => checkOOR(task, newConfig));
 		console.log("These fall out:", outOfRangeTasks);
+		if (outOfRangeTasks.length > 0) {
+			warningMsg += outOfRangeTasks.length === 1 ? "A current task doesn't fit the new start and end times!\n" : "Some current tasks don't fit the new start and end times!\n";
+		}
 	
-		return true;
+		return warningMsg.length > 0;
 	}
 
 	function saveSettings() {
@@ -36,11 +52,13 @@
 		}
 		newConfig.daySpan = newConfig.startTime >= newConfig.endTime ? 24 + newConfig.endTime - newConfig.startTime : newConfig.endTime - newConfig.startTime;
 	
-		if (settingsCheck(newConfig)) {
+		if (!settingsCheck(newConfig)) {
 			$defaults = newConfig;
 
-			console.log($defaults);
+			//console.log($defaults);
 			configShow = false;
+		} else {
+
 		}
 	}
 </script>
@@ -62,6 +80,7 @@
 			<label for="endTimeInput">Day end:</label>
 			<input required bind:value={dayEnd} id="endTimeInput" type="time" min={oneMoreHour(dayStart)} step="3600">
 		</div>
+		<span>{warningMsg}</span>
 		<input type="submit" value="Save" id="save">
 	</form>
 </div>
