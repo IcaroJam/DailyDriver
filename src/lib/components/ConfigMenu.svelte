@@ -169,6 +169,18 @@
 		border-radius: 5px;
 
 		background-color: var(--sideBarElementColour);
+
+		cursor: pointer;
+	}
+
+	#save {
+		border-bottom: solid 3px var(--sideBarElementColour);
+
+		transition: background .2s ease;
+	}
+
+	#save:hover {
+		background-color: transparent;
 	}
 
 	.config-horizontal label {
