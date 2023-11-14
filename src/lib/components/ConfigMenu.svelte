@@ -7,13 +7,11 @@
 	let dayStart = $defaults.dayStart;
 	let dayEnd = $defaults.dayEnd;
 
+	const invalidity = {
+		dayStart: false,
+		dayEnd: false,
+	};
 	let warningMsg = "";
-
-	function oneMoreHour(givenTime) {
-		const temp = parseInt(givenTime.slice(0, 2)) + 1;
-
-		return temp >= 24 ? temp % 24 + ":00" : temp + ":00";
-	}
 
 	function checkOOR(task, nc) {
 		// If the new position of the task is greater than or equal to the total height of the task container, it overflows.
@@ -25,9 +23,12 @@
 
 		// Check if any tasks would fall out of the new time span:
 		const outOfRangeTasks = $tasksList.filter((task) => checkOOR(task, newConfig));
-		console.log("These fall out:", outOfRangeTasks);
 		if (outOfRangeTasks.length > 0) {
-			warningMsg += outOfRangeTasks.length === 1 ? "A current task doesn't fit the new start and end times!\n" : "Some current tasks don't fit the new start and end times!\n";
+			warningMsg += outOfRangeTasks.length === 1 ?
+				"A current task doesn't fit the new start and end times!\n" :
+				"Some current tasks don't fit the new start and end times!\n";
+			invalidity.dayStart = true;
+			invalidity.dayEnd = true;
 		}
 	
 		return warningMsg.length > 0;
@@ -65,11 +66,11 @@
 		<div class="deco-div"></div>
 		<div class="config-horizontal">
 			<label for="startTimeInput">Day start:</label>
-			<input required bind:value={dayStart} id="startTimeInput" type="time" step="3600">
+			<input required bind:value={dayStart} id="startTimeInput" type="time" step="3600" class:invalid={invalidity.dayStart}>
 		</div>
 		<div class="config-horizontal">
 			<label for="endTimeInput">Day end:</label>
-			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600">
+			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600" class:invalid={invalidity.dayEnd}>
 		</div>
 		<span>{warningMsg}</span>
 		<input type="submit" value="Save" id="save">
@@ -142,5 +143,9 @@
 		height: 80%;
 
 		flex-grow: 1;
+	}
+
+	.invalid {
+		background-color: red;
 	}
 </style>
