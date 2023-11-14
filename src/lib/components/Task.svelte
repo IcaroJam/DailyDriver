@@ -196,7 +196,7 @@
 		width: 50%;
 
 		position: absolute;
-		bottom: 4%;
+		bottom: 2%;
 
 		display: flex;
 		justify-content: space-between;
