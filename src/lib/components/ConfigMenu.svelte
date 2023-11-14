@@ -1,5 +1,6 @@
 <script>
 	import { defaults, tasksList } from "../../stores.js";
+	import { getSpan } from "./AddTaskDropDown.svelte";
 
 	export let configShow = false;
 
@@ -15,18 +16,8 @@
 	}
 
 	function checkOOR(task, nc) {
-		// This function is really quite bad atm isn't it?
-		if (nc.startTime > nc.endTime)
-			return task.timeSpan > nc.daySpan
-				|| (task.startTime <= nc.startTime && task.startTime >= nc.endTime)
-				|| (task.endTime >= nc.endTime && task.endTime <= nc.startTime);
-		else if (nc. endTime > nc.startTime)
-			return task.timeSpan > nc.daySpan
-				|| task.startTime < nc.startTime
-				|| task.endTime > nc.endTime
-				|| task.startTime > task.endTime;
-		else
-			return false;
+		// If the new position of the task is greater than or equal to the total height of the task container, it overflows.
+		return (getSpan(nc.startTime, task.startTime) >= nc.daySpan);
 	}
 
 	function settingsCheck(newConfig) {
