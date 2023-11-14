@@ -47,6 +47,8 @@
 		if (!settingsCheck(newConfig)) {
 			$defaults = newConfig;
 
+			localStorage.setItem("dailydriver_config", JSON.stringify($defaults));
+
 			//console.log($defaults);
 			configShow = false;
 		} else {
