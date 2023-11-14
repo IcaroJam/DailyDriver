@@ -102,7 +102,7 @@
 
 	.config-horizontal {
 		width: 100%;
-		height: 40px;
+		height: 50px;
 
 		display: flex;
 		align-items: center;
@@ -135,6 +135,17 @@
 		background-color: var(--titleBarColour);
 	}
 
+	input {
+		height: 50px;
+
+		padding: 5px;
+
+		border: none;
+		border-radius: 5px;
+
+		background-color: var(--sideBarElementColour);
+	}
+
 	.config-horizontal label {
 		display: flex;
 		justify-content: center;
@@ -148,6 +159,6 @@
 	}
 
 	.invalid {
-		background-color: red;
+		background-color: var(--warningColour, brown);
 	}
 </style>
