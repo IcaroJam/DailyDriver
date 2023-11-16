@@ -11,7 +11,7 @@ I also plan on allowing time independent tasks that act as simple ToDos, but non
 
 ## Current Features
 As of now, DailyDriver offers the following:
-- Creation of tasks in a defined interval [8:00 - 22:00].
+- Creation of tasks.
     - These tasks each hold a start and end hour and a description.
     - All their fields can be edited once created.
     - Tasks can be marked as completed.
@@ -19,11 +19,12 @@ As of now, DailyDriver offers the following:
     - Tasks are displayed as boxes laid out from their start to end hours.
 - A green and brown palette that's cozy and soft on the eyes (at least to me, contrast is a bit too low for some people though).
 - Animations and transitions for most stuff that makes it feel more alive and less stiff.
+- Barebones configuration menu that allows the user to change the day's start and end hours. If a task would fall out of the new day range, no changes are made and a warning indicating the issue is displayed.
 - Working mostly fine in both desktop and mobile.
 
 ## Planned features
 - Settings and customization.
-    - Being able to set different day start and end hours.
+    - Being able to change the title bar text.
     - Having a set of default themes to choose from.
     - Being able to create custom themes, import and export them.
 - Taskier tasks.

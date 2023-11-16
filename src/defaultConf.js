@@ -2,9 +2,9 @@
 // there aren't any settings stablished by the user inside localstorage.
 const	defaults = {
 	startTime: 8,
-	endTime: 18,
+	endTime: 20,
 	dayStart: "08:00",
-	dayEnd: "18:00",
+	dayEnd: "20:00",
 };
 
 export { defaults };
