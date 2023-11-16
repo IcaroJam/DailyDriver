@@ -14,8 +14,8 @@
 	let warningMsg = "";
 
 	function checkOOR(task, nc) {
-		// If the new position of the task is greater than or equal to the total height of the task container, it overflows.
-		return (getSpan(nc.startTime, task.startTime) >= nc.daySpan);
+		// If the new end position of the task is greater than or equal to the total height of the task container, it overflows.
+		return (getSpan(nc.startTime, task.startTime) + task.timeSpan >= nc.daySpan);
 	}
 
 	function settingsCheck(newConfig) {
