@@ -1,4 +1,4 @@
-# DailyDriver
+# <img alt="The DailyDriver logo" src="./static/favicon.svg" width="64"> DailyDriver
 ### A small dayplanning webapp
 
 This projects aims to serve as a way to both learn svelte and webdev and also help me plan out my days a bit better.
