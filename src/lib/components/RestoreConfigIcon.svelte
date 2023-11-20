@@ -1,6 +1,5 @@
 <script>
 	import { fade } from "svelte/transition";
-	import { defaults } from "../../stores";
 
 	export let oldVal, newVal;
 
