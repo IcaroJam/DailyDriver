@@ -1,4 +1,5 @@
 <script>
+	import RestoreConfigIcon from "./RestoreConfigIcon.svelte";
 	import { defaults, tasksList } from "../../stores.js";
 	import { getSpan } from "./AddTaskDropDown.svelte";
 
@@ -62,10 +63,10 @@
 <div class="blurred-window" on:submit|preventDefault={saveSettings}>
 	<form class="config-window">
 		<div class="config-horizontal">
-			<button id="close-config-btn" class="roundIcons" title="Close settings" on:click={() => {configShow = false;}}>
-				<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<button id="close-config-btn" title="Close settings" on:click|preventDefault={() => {configShow = false;}}>
+				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<g id="Edit / Add_Plus_Circle">
-					<path id="Vector" d="M8 12H12M12 12H16M12 12V16M12 12V8M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path id="Vector" d="M8 12H12M12 12H16M12 12V16M12 12V8M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 					</g>
 				</svg>
 			</button>
@@ -75,10 +76,12 @@
 		<div class="config-horizontal">
 			<label for="startTimeInput">Day start:</label>
 			<input required bind:value={dayStart} id="startTimeInput" type="time" step="3600" class:invalid={invalidity.dayStart}>
+			<RestoreConfigIcon bind:oldVal={$defaults.dayStart} bind:newVal={dayStart} />
 		</div>
 		<div class="config-horizontal">
 			<label for="endTimeInput">Day end:</label>
 			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600" class:invalid={invalidity.dayEnd}>
+			<RestoreConfigIcon bind:oldVal={$defaults.dayEnd} bind:newVal={dayEnd} />
 		</div>
 		<span>{warningMsg}</span>
 		<input type="submit" value="Save" id="save">
