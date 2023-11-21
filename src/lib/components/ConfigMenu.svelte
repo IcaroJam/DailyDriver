@@ -7,10 +7,12 @@
 
 	let dayStart = $defaults.dayStart;
 	let dayEnd = $defaults.dayEnd;
+	let titleTxt = $defaults.titleTxt;
 
 	const invalidity = {
 		dayStart: false,
 		dayEnd: false,
+		titleTxt: false,
 	};
 	let warningMsg = "";
 
@@ -42,6 +44,7 @@
 			dayStart: dayStart,
 			dayEnd: dayEnd,
 			daySpan: 0,
+			titleTxt: titleTxt,
 		}
 		newConfig.daySpan = newConfig.startTime >= newConfig.endTime ? 24 + newConfig.endTime - newConfig.startTime : newConfig.endTime - newConfig.startTime;
 	
@@ -82,6 +85,11 @@
 			<label for="endTimeInput">Day end:</label>
 			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600" class:invalid={invalidity.dayEnd}>
 			<RestoreConfigIcon bind:oldVal={$defaults.dayEnd} bind:newVal={dayEnd} />
+		</div>
+		<div class="config-horizontal">
+			<label for="titleInput">Title bar text:</label>
+			<input required bind:value={titleTxt} id="titleInput" type="text" maxlength="14" autocomplete="off" class:invalid={invalidity.titleTxt}>
+			<RestoreConfigIcon bind:oldVal={$defaults.titleTxt} bind:newVal={titleTxt} />
 		</div>
 		<span>{warningMsg}</span>
 		<input type="submit" value="Save" id="save">
@@ -187,6 +195,8 @@
 	}
 
 	.config-horizontal label {
+		max-width: 20%;
+
 		display: flex;
 		justify-content: center;
 		align-items: center;

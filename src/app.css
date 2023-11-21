@@ -9,12 +9,24 @@
 	--sideBarElementColour: #656045;
 
 	--navHeight: 60px;
-	--navIconSize: 50px;
+	--navIconSize: 40px;
+}
+
+@media (min-width: 768px) {
+	:root {
+		--navIconSize: 50px;
+	}
 }
 
 * {
 	box-sizing: border-box;
-	font-size: small;
+	font-size: 12px;
+}
+
+@media (min-width: 768px) {
+	* {
+		font-size: medium;
+	}
 }
 
 html {
@@ -45,12 +57,6 @@ body {
 
 ::-webkit-scrollbar-track {
 	background: transparent;
-}
-
-@media (min-width: 768px) {
-	* {
-		font-size: medium;
-	}
 }
 
 .blurred-window {
