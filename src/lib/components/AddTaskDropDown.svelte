@@ -119,7 +119,7 @@
 		border: dashed 3px var(--titleBarColour);
 		border-radius: 30px;
 
-		background-color: var(--mainContainerColour);
+		background-color: var(--bgColour);
 	}
 
 	form {
@@ -143,9 +143,9 @@
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
 	
-		background-color: var(--mainContainerColour);
+		background-color: var(--bgColour);
 
-		color: var(--titleBarColour);
+		color: var(--textColour);
 	}
 
 	form > div {
@@ -170,14 +170,14 @@
 		border: solid 3px var(--titleBarColour);
 		border-radius: 15px;
 	
-		color: var(--titleBarColour);
-		background-color: var(--subdivColour1);
+		color: var(--textColour);
+		background-color: var(--bgColour);
 
 		cursor: pointer;
 	}
 	
 	::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-		color: var(--titleBarColour);
+		color: var(--textColour);
 		opacity: 1; /* Firefox */
 	}
 	
@@ -198,9 +198,9 @@
 	}
 	
 	#save:hover {
-		border-color: var(--subdivColour1);
+		border-color: var(--bgColour);
 	
-		color: var(--subdivColour1);
+		color: var(--textAltColour);
 		background-color: var(--titleBarColour);
 	}
 </style>

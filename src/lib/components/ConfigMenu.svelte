@@ -116,9 +116,9 @@
 		border: dashed 3px var(--titleBarColour);
 		border-radius: 30px;
 
-		background-color: var(--sideBarBackColour);
+		background-color: var(--sideBarColour);
 
-		color: var(--titleBarColour);
+		color: var(--textColour);
 	}
 
 	.config-horizontal {
@@ -157,7 +157,7 @@
 		width: 40px;
 		height: 40px;
 
-		stroke: var(--titleBarColour);
+		stroke: var(--iconColour);
 	}
 
 	#main-config-label {
@@ -183,13 +183,13 @@
 		border: none;
 		border-radius: 5px;
 
-		background-color: var(--sideBarElementColour);
+		background-color: var(--sideBarCellColour);
 
 		cursor: pointer;
 	}
 
 	#save {
-		border-bottom: solid 3px var(--sideBarElementColour);
+		border-bottom: solid 3px var(--sideBarCellColour);
 
 		transition: background .2s ease;
 	}

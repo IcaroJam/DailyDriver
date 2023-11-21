@@ -65,6 +65,6 @@
 		border-radius: 30px;
 
 		background-color: var(--titleBarColour);
-		color: var(--mainContainerColour);
+		color: var(--bgColour);
 	}
 </style>

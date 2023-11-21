@@ -22,7 +22,7 @@
 		padding-bottom: 10px;
 
 		border-radius: 0 0 30px 0;
-		background-color: var(--sideBarBackColour);
+		background-color: var(--sideBarColour);
 	}
 	
 	.sideElement {
@@ -35,9 +35,9 @@
 		align-items: center;
 	
 		border-radius: 0 0 30px 0;
-		background-color: var(--sideBarElementColour);
+		background-color: var(--sideBarCellColour);
 	
 		font-size: 1.5em;
-		color: var(--titleBarColour);
+		color: var(--sideBarTextColour);
 	}
 </style>

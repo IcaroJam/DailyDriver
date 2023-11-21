@@ -1,12 +1,25 @@
 :root {
-	--mainContainerColour: #567356;
+	--bgColour: #567356;
+
+	--navBarColour: var(--bgColour);
 	--titleBarColour: #354531;
-	--subdivColour1: var(--mainContainerColour);
-	--subdivColour2: #456747;
-	--subdivColour3: #386252;
-	--titleTextColour: #567356;
-	--sideBarBackColour: #7d6750;
-	--sideBarElementColour: #656045;
+
+	--sideBarColour: #7d6750;
+	--sideBarCellColour: #656045;
+	--sideBarTextColour: var(--titleBarColour);
+
+	--taskSpaceColour: #456747;
+	--taskSpaceContrastColour: #386252;
+
+	--taskBgColour: var(--sideBarColour);
+	--taskAltBgColour: var(--sideBarCellColour);
+
+	--iconColour: var(--titleBarColour);
+
+	--textColour: var(--titleBarColour);
+	--textAltColour: var(--bgColour);
+
+	--warningColour: brown;
 
 	--navHeight: 60px;
 	--navIconSize: 40px;
@@ -43,7 +56,7 @@ body {
 
 	margin: 0;
 
-	background-color: var(--mainContainerColour, slategrey);
+	background-color: var(--bgColour);
 }
 
 ::-webkit-scrollbar {

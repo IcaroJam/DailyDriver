@@ -44,10 +44,10 @@
 	}
 
 	.colour1 {
-		background-color: var(--subdivColour2);
+		background-color: var(--taskSpaceColour);
 	}
 
 	.colour2 {
-		background-color: var(--subdivColour3);
+		background-color: var(--taskSpaceContrastColour);
 	}
 </style>
