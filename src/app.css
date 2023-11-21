@@ -16,8 +16,8 @@
 
 	--iconColour: var(--titleBarColour);
 
-	--textColour: var(--titleBarColour);
-	--textAltColour: var(--bgColour);
+	--textColour: #203524;
+	--textAltColour: #749276;
 
 	--warningColour: brown;
 

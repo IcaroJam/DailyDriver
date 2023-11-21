@@ -38,6 +38,6 @@
 		background-color: var(--sideBarCellColour);
 	
 		font-size: 1.5em;
-		color: var(--sideBarTextColour);
+		color: var(--textColour);
 	}
 </style>

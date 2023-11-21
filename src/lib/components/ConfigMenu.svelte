@@ -184,6 +184,7 @@
 		border-radius: 5px;
 
 		background-color: var(--sideBarCellColour);
+		color: inherit;
 
 		cursor: pointer;
 	}
