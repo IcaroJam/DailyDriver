@@ -75,7 +75,9 @@
 			</button>
 			<span id="main-config-label">DailyDriver Settings!</span>
 		</div>
+
 		<div class="deco-div"></div>
+
 		<div class="config-horizontal">
 			<label for="startTimeInput">Day start:</label>
 			<input required bind:value={dayStart} id="startTimeInput" type="time" step="3600" class:invalid={invalidity.dayStart}>
@@ -86,11 +88,13 @@
 			<input required bind:value={dayEnd} id="endTimeInput" type="time" step="3600" class:invalid={invalidity.dayEnd}>
 			<RestoreConfigIcon bind:oldVal={$defaults.dayEnd} bind:newVal={dayEnd} />
 		</div>
+
 		<div class="config-horizontal">
 			<label for="titleInput">Title bar text:</label>
 			<input required bind:value={titleTxt} id="titleInput" type="text" maxlength="14" autocomplete="off" class:invalid={invalidity.titleTxt}>
 			<RestoreConfigIcon bind:oldVal={$defaults.titleTxt} bind:newVal={titleTxt} />
 		</div>
+
 		<span>{warningMsg}</span>
 		<input type="submit" value="Save" id="save">
 	</form>
