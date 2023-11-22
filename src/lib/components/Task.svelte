@@ -40,13 +40,13 @@
 		$selectedTasks = [i];
 	}
 
-	function completeTasks() {
+	function completeTask() {
 		toggleSelected();
 		props.completed = !props.completed;
 		localStorage.setItem("dailydriver_tasks", JSON.stringify($tasksList));
 	}
 
-	function deleteTasks() {
+	function deleteTask() {
 		const tempList = [...$tasksList];
 		tempList.splice(i, 1);
 		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
@@ -71,7 +71,7 @@
 			<!-- Holy shit ok, apparently preventDefault keeps the onclick from triggering right after the ontouchstart. The stopImmediatePropagation takes care of preventing the ontouchstart from the parent div of also triggering.
 			There MUST be a better way of doing this so it works fine both for web and mobile cause boy oh boy is having this many events and variables and wtf not confusing as all hell -->
 			<svg
-			role="button" tabindex="0" on:touchstart|preventDefault|stopImmediatePropagation={completeTasks} on:click={completeTasks} on:keypress={completeTasks}
+			role="button" tabindex="0" on:touchstart|preventDefault|stopImmediatePropagation={completeTask} on:click={completeTask} on:keypress={completeTask}
 			in:slide={{axis: "x", duration: 100}}
 			out:slide={{axis: "x", duration: 400}}
 			viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +107,7 @@
 			{#if delconf}
 				<button class="fuck-go-back" on:click={() => {delconf = false;}}>No</button>
 				Sure?
-				<button class="delete-btn" style="width: unset;" on:click={deleteTasks}>Yes</button>
+				<button class="delete-btn" style="width: unset;" on:click={deleteTask}>Yes</button>
 			{:else}
 				<button class="delete-btn" on:click={() => {delconf = true;}}>!! Delete task !!</button>
 			{/if}
