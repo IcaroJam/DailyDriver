@@ -31,6 +31,7 @@
 		if (!props.completed) {
 			selected = !selected;
 			selected ? $selectedTasks.push(i) : $selectedTasks.splice($selectedTasks.indexOf(i), 1);
+			$selectedTasks = $selectedTasks;
 		}
 	}
 
@@ -47,10 +48,7 @@
 
 	function deleteTasks() {
 		const tempList = [...$tasksList];
-		for (let j = tempList.length - 1; j >= 0; j--)
-			if ($selectedTasks.indexOf(j) !== -1)
-				tempList.splice(j, 1);
-		$selectedTasks = [];
+		tempList.splice(i, 1);
 		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
 		editing = false;
 		$tasksList = tempList;
