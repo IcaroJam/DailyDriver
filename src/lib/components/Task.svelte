@@ -3,7 +3,7 @@
 	import { slide, fly } from "svelte/transition";
     import AddTaskDropDown from "./AddTaskDropDown.svelte";
 	import { getSpan } from "./AddTaskDropDown.svelte";
-	import { defaults, tasksList } from "../../stores";
+	import { defaults, tasksList, selectedTasks } from "../../stores";
 
 	export let props;
 	export let i;
@@ -20,30 +20,37 @@
 	$: taskHeight = 110 * props.timeSpan;
 	$: taskTop = 110 * props.timeFromStart + 5;
 
+	$: selected = $selectedTasks.indexOf(i) !== -1;
+
 	onMount(() => {
 		slideIn = true;
 		//console.log("Task ", i, ": ", props);
 	});
 
-	function completeTask() {
-		props.completed = !props.completed;
-		selected = false;
-		localStorage.setItem("dailydriver_tasks", JSON.stringify($tasksList));
-	}
-
 	function toggleSelected() {
-		if (!props.completed)
+		if (!props.completed) {
 			selected = !selected;
+			selected ? $selectedTasks.push(i) : $selectedTasks.splice($selectedTasks.indexOf(i), 1);
+		}
 	}
 
 	function editTask() {
 		editing = !editing;
-		selected = false;
+		$selectedTasks = [i];
 	}
 
-	function deleteTask() {
-		const tempList = $tasksList;
-		tempList.splice(i, 1);
+	function completeTasks() {
+		toggleSelected();
+		props.completed = !props.completed;
+		localStorage.setItem("dailydriver_tasks", JSON.stringify($tasksList));
+	}
+
+	function deleteTasks() {
+		const tempList = [...$tasksList];
+		for (let j = tempList.length - 1; j >= 0; j--)
+			if ($selectedTasks.indexOf(j) !== -1)
+				tempList.splice(j, 1);
+		$selectedTasks = [];
 		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
 		editing = false;
 		$tasksList = tempList;
@@ -58,16 +65,15 @@
 	style={`height: ${taskHeight}px; top: ${taskTop}px`}
 	transition:slide={{axis: "x", duration: 500}}
 	role="button" tabindex="0"
-	on:touchstart={toggleSelected}
-	on:touchmove={() => {selected = false;}}
-	on:mouseover={() => {selected = true;}}
-	on:focus={() => {selected = true;}}
-	on:mouseleave={() => {selected = false;}}>
+	on:click={toggleSelected}
+	on:keypress={toggleSelected}
+	on:touchstart|preventDefault={toggleSelected}
+	on:touchmove={() => {selected = false;}}>
 		{#if selected || props.completed}
 			<!-- Holy shit ok, apparently preventDefault keeps the onclick from triggering right after the ontouchstart. The stopImmediatePropagation takes care of preventing the ontouchstart from the parent div of also triggering.
 			There MUST be a better way of doing this so it works fine both for web and mobile cause boy oh boy is having this many events and variables and wtf not confusing as all hell -->
 			<svg
-			role="button" tabindex="0" on:touchstart|preventDefault|stopImmediatePropagation={completeTask} on:click={completeTask} on:keypress={completeTask}
+			role="button" tabindex="0" on:touchstart|preventDefault|stopImmediatePropagation={completeTasks} on:click={completeTasks} on:keypress={completeTasks}
 			in:slide={{axis: "x", duration: 100}}
 			out:slide={{axis: "x", duration: 400}}
 			viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +109,7 @@
 			{#if delconf}
 				<button class="fuck-go-back" on:click={() => {delconf = false;}}>No</button>
 				Sure?
-				<button class="delete-btn" style="width: unset;" on:click={deleteTask}>Yes</button>
+				<button class="delete-btn" style="width: unset;" on:click={deleteTasks}>Yes</button>
 			{:else}
 				<button class="delete-btn" on:click={() => {delconf = true;}}>!! Delete task !!</button>
 			{/if}
@@ -129,6 +135,8 @@
 		background-color: var(--taskBgColour);
 
 		overflow: hidden;
+
+		cursor: pointer;
 
 		transition: all .5s ease;
 	}
