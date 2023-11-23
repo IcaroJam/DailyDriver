@@ -29,8 +29,7 @@
 
 	function toggleSelected() {
 		if (!props.completed) {
-			selected = !selected;
-			selected ? $selectedTasks.push(i) : $selectedTasks.splice($selectedTasks.indexOf(i), 1);
+			selected ? $selectedTasks.splice($selectedTasks.indexOf(i), 1) : $selectedTasks.push(i);
 			$selectedTasks = $selectedTasks;
 		}
 	}

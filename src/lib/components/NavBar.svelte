@@ -15,20 +15,20 @@
 	}
 
 	function completeTasks() {
+		// Create a new array from a copy of tasksList. The selected tasks will have their completed value flipped.
 		const tempList = [...$tasksList];
-		for (let j = tempList.length - 1; j >= 0; j--)
-			if ($selectedTasks.indexOf(j) !== -1)
-				tempList[j].completed = !tempList[j].completed;
+		tempList.forEach((task, i) => {
+			if ($selectedTasks.indexOf(i) !== -1)
+				task.completed = !task.completed;
+		});
 		$selectedTasks = [];
 		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
 		$tasksList = tempList;
 	}
 
 	function deleteTasks() {
-		const tempList = [...$tasksList];
-		for (let j = tempList.length - 1; j >= 0; j--)
-			if ($selectedTasks.indexOf(j) !== -1)
-				tempList.splice(j, 1);
+		// Create a new array from a copy of tasksList. This array will only hold not selected tasks.
+		const tempList = [...$tasksList].filter((task, i) => $selectedTasks.indexOf(i) === -1);
 		$selectedTasks = [];
 		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
 		$tasksList = tempList;
