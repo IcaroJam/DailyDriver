@@ -46,6 +46,7 @@
 	}
 
 	function deleteTask() {
+		toggleSelected();
 		const tempList = [...$tasksList];
 		tempList.splice(i, 1);
 		localStorage.setItem("dailydriver_tasks", JSON.stringify(tempList));
