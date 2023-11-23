@@ -27,7 +27,7 @@
 	</div>
 	<footer>
 		<small>
-			DailyDriver alpha-0.0.2.1
+			DailyDriver alpha-0.0.3
 		</small>
 	</footer>
 </div>
@@ -65,6 +65,6 @@
 		border-radius: 30px;
 
 		background-color: var(--titleBarColour);
-		color: var(--mainContainerColour);
+		color: var(--bgColour);
 	}
 </style>

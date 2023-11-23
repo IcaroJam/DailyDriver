@@ -5,6 +5,7 @@ const	defaults = {
 	endTime: 20,
 	dayStart: "08:00",
 	dayEnd: "20:00",
+	titleTxt: "DailyDriver",
 };
 
 export { defaults };
