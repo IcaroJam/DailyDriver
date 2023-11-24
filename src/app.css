@@ -36,6 +36,13 @@
 	font-size: 12px;
 }
 
+*:focus {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
 @media (min-width: 768px) {
 	* {
 		font-size: medium;
