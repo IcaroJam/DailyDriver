@@ -64,14 +64,12 @@
 	transition:slide={{axis: "x", duration: 500}}
 	role="button" tabindex="0"
 	on:click={toggleSelected}
-	on:keypress={toggleSelected}
-	on:touchstart|preventDefault={toggleSelected}
-	on:touchmove={toggleSelected}>
+	on:keypress={toggleSelected}>
 		{#if selected || props.completed}
 			<!-- Holy shit ok, apparently preventDefault keeps the onclick from triggering right after the ontouchstart. The stopImmediatePropagation takes care of preventing the ontouchstart from the parent div of also triggering.
 			There MUST be a better way of doing this so it works fine both for web and mobile cause boy oh boy is having this many events and variables and wtf not confusing as all hell -->
 			<svg
-			role="button" tabindex="0" on:touchstart|preventDefault|stopImmediatePropagation={completeTask} on:click|stopImmediatePropagation={completeTask} on:keypress|stopImmediatePropagation={completeTask}
+			role="button" tabindex="0" on:click|stopImmediatePropagation={completeTask} on:keypress|stopImmediatePropagation={completeTask}
 			in:slide={{axis: "x", duration: 100}}
 			out:slide={{axis: "x", duration: 400}}
 			viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +85,7 @@
 		<span>{props.description}</span>
 		{#if selected && !props.completed}
 			<svg
-			role="button" tabindex="0" on:touchstart|preventDefault|stopImmediatePropagation={editTask} on:click|stopImmediatePropagation={editTask} on:keypress|stopImmediatePropagation={editTask}
+			role="button" tabindex="0" on:click|stopImmediatePropagation={editTask} on:keypress|stopImmediatePropagation={editTask}
 			in:slide={{axis: "x", duration: 100}}
 			out:slide={{axis: "x", duration: 400}}
 			viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
