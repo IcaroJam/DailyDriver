@@ -66,7 +66,7 @@
 	on:click={toggleSelected}
 	on:keypress={toggleSelected}
 	on:touchstart|preventDefault={toggleSelected}
-	on:touchmove={() => {selected = false;}}>
+	on:touchmove={toggleSelected}>
 		{#if selected || props.completed}
 			<!-- Holy shit ok, apparently preventDefault keeps the onclick from triggering right after the ontouchstart. The stopImmediatePropagation takes care of preventing the ontouchstart from the parent div of also triggering.
 			There MUST be a better way of doing this so it works fine both for web and mobile cause boy oh boy is having this many events and variables and wtf not confusing as all hell -->
