@@ -36,6 +36,7 @@
 
 	function editTask() {
 		editing = !editing;
+		delconf = false; // Reset delconf when exiting task editing.
 		$selectedTasks = [i];
 	}
 
