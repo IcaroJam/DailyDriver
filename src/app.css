@@ -37,10 +37,14 @@
 }
 
 *:focus {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+input:focus {
+	outline: auto medium currentColor;
 }
 
 @media (min-width: 768px) {
