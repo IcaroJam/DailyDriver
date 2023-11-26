@@ -1,23 +1,23 @@
 :root {
-	--bgColour: #567356;
+	--bgColour: #DFE0E2;
 
-	--navBarColour: var(--bgColour);
-	--titleBarColour: #354531;
+	--navBarColour: #CF5C36;
+	--titleBarColour: #050517;
 
-	--sideBarColour: #7d6750;
-	--sideBarCellColour: #656045;
-	--sideBarTextColour: var(--titleBarColour);
+	--sideBarColour: #CF5C36;
+	--sideBarCellColour: #EFC88B;
+	--sideBarTextColour: var(--textColour);
 
-	--taskSpaceColour: #456747;
-	--taskSpaceContrastColour: #386252;
+	--taskSpaceColour: #F7ECC9;
+	--taskSpaceContrastColour: #EAEBEC;
 
-	--taskBgColour: var(--sideBarColour);
+	--taskBgColour: #E3A28C;
 	--taskAltBgColour: var(--sideBarCellColour);
 
 	--iconColour: var(--titleBarColour);
 
-	--textColour: #203524;
-	--textAltColour: #749276;
+	--textColour: #050517;
+	--textAltColour: #F4F5F5;
 
 	--warningColour: brown;
 

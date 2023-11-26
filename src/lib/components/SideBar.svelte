@@ -22,6 +22,9 @@
 		padding-bottom: 10px;
 
 		border-radius: 0 0 30px 0;
+		border: solid 3px var(--titleBarColour);
+		border-top: none;
+		border-left: none;
 		background-color: var(--sideBarColour);
 	}
 	
@@ -35,6 +38,9 @@
 		align-items: center;
 	
 		border-radius: 0 0 30px 0;
+		border: solid 2px var(--taskSpaceColour);
+		border-left: none;
+		border-bottom: none;
 		background-color: var(--sideBarCellColour);
 	
 		font-size: 1.5em;

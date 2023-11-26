@@ -70,6 +70,7 @@
 			<!-- Holy shit ok, apparently preventDefault keeps the onclick from triggering right after the ontouchstart. The stopImmediatePropagation takes care of preventing the ontouchstart from the parent div of also triggering.
 			There MUST be a better way of doing this so it works fine both for web and mobile cause boy oh boy is having this many events and variables and wtf not confusing as all hell -->
 			<svg
+			style="border-left: none;"
 			role="button" tabindex="0" on:click|stopImmediatePropagation={completeTask} on:keypress|stopImmediatePropagation={completeTask}
 			in:slide={{axis: "x", duration: 100}}
 			out:slide={{axis: "x", duration: 400}}
@@ -127,6 +128,8 @@
 		right: 0;
 	
 		border-radius: 30px 0 0 30px;
+		border: solid 2px var(--iconColour);
+		border-right: none;
 	
 		color: var(--textColour);
 		background-color: var(--taskBgColour);

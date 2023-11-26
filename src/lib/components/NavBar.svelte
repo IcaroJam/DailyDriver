@@ -108,6 +108,7 @@
 	
 		justify-content: space-between;
 	
+		border-bottom: solid 3px var(--titleBarColour);
 		background-color: var(--navBarColour);
 	
 		position: sticky;
